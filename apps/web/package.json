@@ -11,18 +11,35 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@portabletext/react": "^6.0.2",
     "@repo/ui": "*",
+    "@sanity/client": "^7.14.1",
+    "@sanity/icons": "^3.7.4",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^4.22.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "gray-matter": "^4.0.3",
     "next": "16.1.0",
+    "next-sanity": "^11.6.12",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "sanity": "^4.22.0",
+    "styled-components": "^6.3.9"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "@sanity/cli": "^5.8.1",
+    "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
+    "autoprefixer": "^10.4.24",
     "eslint": "^9.39.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
     "typescript": "5.9.2"
   }
 }
