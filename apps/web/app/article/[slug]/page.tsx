@@ -53,6 +53,9 @@ export default async function ArticlePage({
           <Link href="/blog">
             <p className="font-bold">Blog</p>
           </Link>
+          <Link href="/changelog">
+            <p className="">Changelog</p>
+          </Link>
         </div>
       </div>
 

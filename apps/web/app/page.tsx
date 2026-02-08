@@ -35,6 +35,9 @@ export default async function Home() {
           <Link href="/blog">
             <p className="">Blog</p>
           </Link>
+          <Link href="/changelog">
+            <p className="">Changelog</p>
+          </Link>
         </div>
       </div>
       <div className="border-gray-200 w-screen flex justify-center">
