@@ -19,6 +19,7 @@
     "@sanity/vision": "^4.22.0",
     "@tailwindcss/typography": "^0.5.19",
     "gray-matter": "^4.0.3",
+    "motion": "^12.34.2",
     "next": "16.1.0",
     "next-sanity": "^11.6.12",
     "react": "^19.2.0",

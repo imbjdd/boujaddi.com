@@ -3,6 +3,8 @@ import { Button } from "@repo/ui/button";
 import { getArticles } from "../lib/articles";
 import { getRecentFilms } from "../lib/letterboxd";
 import { MoviesHover } from "./movies-hover";
+import { FadeIn } from "./fade-in";
+import { AnimatedList } from "./animated-list";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -43,15 +45,15 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-      <div className="border-gray-200 w-screen flex justify-center">
+      <FadeIn y={0} className="border-gray-200 w-screen flex justify-center">
         <div className="max-w-3xl h-52 gap-12 w-full flex border-x border-gray-200 relative overflow-hidden">
           <img
             src="bg.png"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
         </div>
-      </div>
-      <div className="border-y border-gray-200 w-screen flex justify-center">
+      </FadeIn>
+      <FadeIn delay={0.15} className="border-y border-gray-200 w-screen flex justify-center">
         <div className="max-w-3xl h-fit w-full flex border-x border-gray-200">
           <div className="flex items-center h-fit w-fit p-4 justify-center border-r border-gray-200">
             <img
@@ -73,40 +75,40 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </FadeIn>
       <div className="border-gray-200 w-screen flex justify-center">
         <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
       </div>
       <div className="border-y border-gray-200 w-screen flex justify-center">
         <div className="max-w-3xl px-4 h-fit gap-12 w-full flex border-x border-gray-200">
-          <ul className="list-disc px-4 text-black/70 flex flex-col gap-2 py-2">
-            <li>I love to build projects since I'm very young</li>
-            <li>Speed is one of my main strenghts.</li>
-            <li>
+          <AnimatedList className="list-disc px-4 text-black/70 flex flex-col gap-2 py-2">
+            <span>I love to build projects since I'm very young</span>
+            <span>Speed is one of my main strenghts.</span>
+            <span>
               I like to occasionaly play chess and started to watch{" "}
               <MoviesHover films={films} />
-            </li>
-            <li>
+            </span>
+            <span>
               Polymath, I love to learn new things: GTM, UX, UI, Growth. I want
               to be <span className="italic">very</span> generalist.
-            </li>
-            <li>I have an awesome girlfriend.</li>
-            <li>
+            </span>
+            <span>I have an awesome girlfriend.</span>
+            <span>
               I want my net worth to be{" "}
               1 billion before I
               turn 30.
-            </li>
-            <li>
+            </span>
+            <span>
               I give 10% of my
               revenue to high impact charities.
-            </li>
-          </ul>
+            </span>
+          </AnimatedList>
         </div>
       </div>
       <div className="border-gray-200 w-screen flex justify-center">
         <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
       </div>
-      <div className="border-y border-gray-200 w-screen flex justify-center">
+      <FadeIn className="border-y border-gray-200 w-screen flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full flex flex-col border-x border-gray-200">
           <div className="border-b px-4 h-fit w-full flex border-gray-200">
             <img
@@ -124,7 +126,7 @@ export default async function Home() {
                 </p>
               </div>
               <p className="text-black/70">
-                I develop Rippletide’s product, deliver solutions for clients,
+                I develop Rippletide's product, deliver solutions for clients,
                 organize hackathons, and deploy systems to production.
               </p>
             </div>
@@ -152,12 +154,12 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </FadeIn>
       <div className="border-b border-gray-200 w-screen flex justify-center">
         <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
       </div>
 
-      <div className="border-b border-gray-200 w-screen flex justify-center">
+      <FadeIn className="border-b border-gray-200 w-screen flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full flex flex-col justify-between border-x border-gray-200">
           {articles.map((article) => (
             <Link
@@ -176,12 +178,12 @@ export default async function Home() {
             </Link>
           ))}
         </div>
-      </div>
+      </FadeIn>
       <div className="border-gray-200 w-screen flex justify-center">
         <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
       </div>
 
-      <div className="border-y border-gray-200 w-screen flex justify-center">
+      <FadeIn className="border-y border-gray-200 w-screen flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full flex flex-col justify-between border-x border-gray-200">
           {talks.map((talk) => (
             <div
@@ -196,7 +198,7 @@ export default async function Home() {
             </div>
           ))}
         </div>
-      </div>
+      </FadeIn>
     </div>
   );
 }
