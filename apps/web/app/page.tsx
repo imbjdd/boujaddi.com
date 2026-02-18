@@ -1,6 +1,8 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import { getArticles } from "../lib/articles";
+import { getRecentFilms } from "../lib/letterboxd";
+import { MoviesHover } from "./movies-hover";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const articles = await getArticles();
+  const films = await getRecentFilms("grandefourchett", 3);
 
   const talks = [
     {
@@ -80,7 +83,8 @@ export default async function Home() {
             <li>I love to build projects since I'm very young</li>
             <li>Speed is one of my main strenghts.</li>
             <li>
-              I like to occasionaly play chess, even if my level is very mid
+              I like to occasionaly play chess and started to watch{" "}
+              <MoviesHover films={films} />
             </li>
             <li>
               Polymath, I love to learn new things: GTM, UX, UI, Growth. I want
@@ -89,11 +93,11 @@ export default async function Home() {
             <li>I have an awesome girlfriend.</li>
             <li>
               I want my net worth to be{" "}
-              <span className="blur hover:blur-none">1 billion</span> before I
+              1 billion before I
               turn 30.
             </li>
             <li>
-              I give <span className="blur hover:blur-none">10%</span> of my
+              I give 10% of my
               revenue to high impact charities.
             </li>
           </ul>
