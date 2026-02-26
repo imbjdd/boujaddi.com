@@ -10,25 +10,6 @@
         "typescript": "5.9.2",
       },
     },
-    "apps/docs": {
-      "name": "docs",
-      "version": "0.1.0",
-      "dependencies": {
-        "@repo/ui": "*",
-        "next": "16.1.0",
-        "react": "^19.2.0",
-        "react-dom": "^19.2.0",
-      },
-      "devDependencies": {
-        "@repo/eslint-config": "*",
-        "@repo/typescript-config": "*",
-        "@types/node": "^22.15.3",
-        "@types/react": "19.2.2",
-        "@types/react-dom": "19.2.2",
-        "eslint": "^9.39.1",
-        "typescript": "5.9.2",
-      },
-    },
     "apps/web": {
       "name": "web",
       "version": "0.1.0",
@@ -1303,8 +1284,6 @@
     "direction": ["direction@1.0.4", "", { "bin": { "direction": "cli.js" } }, "sha512-GYqKi1aH7PJXxdhTeZBFrg8vUBeKXi+cNprXsC1kpJcbcVnV9wBsrOu1cQEdG0WeQwlfHiy3XvnKfIrJ2R0NzQ=="],
 
     "doc-path": ["doc-path@4.1.1", "", {}, "sha512-h1ErTglQAVv2gCnOpD3sFS6uolDbOKHDU1BZq+Kl3npPqroU3dYL42lUgMfd5UimlwtRgp7C9dLGwqQ5D2HYgQ=="],
-
-    "docs": ["docs@workspace:apps/docs"],
 
     "doctrine": ["doctrine@2.1.0", "", { "dependencies": { "esutils": "^2.0.2" } }, "sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw=="],
 
