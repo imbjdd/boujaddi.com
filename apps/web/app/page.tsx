@@ -10,7 +10,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Salim Boujaddi - Product Engineer",
-  description: "Product Engineer building fast. I love hackathons, speed, and shipping products.",
+  description:
+    "Product Engineer building fast. I love hackathons, speed, and shipping products.",
 };
 
 export default async function Home() {
@@ -33,10 +34,10 @@ export default async function Home() {
   ];
 
   return (
-    <div className="flex flex-col py-4 relative">
-      <div className="border-y border-gray-200 sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl p-4 h-fit gap-8 w-full flex border-x border-gray-200">
-          <p className="font-bold">~Start</p>
+    <div className="flex flex-col pb-4 relative">
+      <div className="-sticky top-0 z-10 bg-white w-screen flex justify-center">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
+          <p className="font-bold">Work</p>
           <Link href="/blog">
             <p className="">Blog</p>
           </Link>
@@ -45,27 +46,30 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-      <FadeIn y={0} className="border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-52 gap-12 w-full flex border-x border-gray-200 relative overflow-hidden">
+      <FadeIn y={0} className="w-screen flex justify-center">
+        <div className="max-w-3xl rounded-lg h-52 gap-12 w-full flex  relative overflow-hidden">
           <img
             src="bg.png"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
         </div>
       </FadeIn>
-      <FadeIn delay={0.15} className="border-y border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-fit w-full flex border-x border-gray-200">
-          <div className="flex items-center h-fit w-fit p-4 justify-center border-r border-gray-200">
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+      </div>
+      <FadeIn delay={0.15} className="w-screen flex justify-center">
+        <div className="max-w-3xl h-fit w-full flex ">
+          <div className="flex items-center h-fit w-fit justify-center">
             <img
               className="h-32 w-32 aspect-square rounded-lg transition-transform duration-300 hover:-rotate-4 hover:scale-102"
               src="moi.jpeg"
             />
           </div>
           <div className="flex flex-col-reverse  grow">
-            <div className="px-4 py-1 border-t border-gray-200 w-full">
+            <div className="px-4 py-1 w-full">
               <p>Product Engineer</p>
             </div>
-            <div className="px-4 border-t border-gray-200 w-full">
+            <div className="px-4 w-full">
               <p className="font-bold text-2xl">Salim Boujaddi</p>
             </div>
             <div className="px-4 w-full">
@@ -76,11 +80,11 @@ export default async function Home() {
           </div>
         </div>
       </FadeIn>
-      <div className="border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
       </div>
-      <div className="border-y border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl px-4 h-fit gap-12 w-full flex border-x border-gray-200">
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-fit gap-12 w-full flex ">
           <AnimatedList className="list-disc px-4 text-black/70 flex flex-col gap-2 py-2">
             <span>I love to build projects since I'm very young</span>
             <span>Speed is one of my main strenghts.</span>
@@ -93,24 +97,17 @@ export default async function Home() {
               to be <span className="italic">very</span> generalist.
             </span>
             <span>I have an awesome girlfriend.</span>
-            <span>
-              I want my net worth to be{" "}
-              1 billion before I
-              turn 30.
-            </span>
-            <span>
-              I give 10% of my
-              revenue to high impact charities.
-            </span>
+            <span>I want my net worth to be 1 billion before I turn 30.</span>
+            <span>I give 10% of my revenue to high impact charities.</span>
           </AnimatedList>
         </div>
       </div>
-      <div className="border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
       </div>
-      <FadeIn className="border-y border-gray-200 w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full flex flex-col border-x border-gray-200">
-          <div className="border-b px-4 h-fit w-full flex border-gray-200">
+      <FadeIn className="w-screen flex justify-center" whileInView>
+        <div className="max-w-3xl h-fit w-full flex flex-col ">
+          <div className="h-fit w-full flex">
             <img
               className="ml-4 mr-8 my-4 w-16 h-16 transition-transform duration-300 hover:-rotate-20 hover:scale-102"
               src="/rippletide.png"
@@ -118,7 +115,9 @@ export default async function Home() {
             <div className="flex flex-col w-full justify-center gap-2">
               <div className="flex justify-between w-full">
                 <p>
-                  <span className="font-semibold">Product Engineer</span>
+                  <span className="font-semibold text-black/80">
+                    Product Engineer
+                  </span>
                   <span className="text-black/70">, Rippletide</span>
                 </p>
                 <p>
@@ -131,7 +130,7 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="max-w-3xl px-4 h-fit w-full flex">
+          <div className="max-w-3xl h-fit w-full flex">
             <img
               className="ml-4 mr-8 my-4 w-16 h-16 transition-transform duration-300 hover:-rotate-8 hover:scale-102"
               src="/linkpact.jpeg"
@@ -139,7 +138,9 @@ export default async function Home() {
             <div className="flex flex-col w-full justify-center gap-2">
               <div className="flex justify-between w-full">
                 <p>
-                  <span className="font-semibold">AI Consultant</span>
+                  <span className="font-semibold text-black/80">
+                    AI Consultant
+                  </span>
                   <span className="text-black/70">, LinkPact</span>
                 </p>
                 <p>June 2025 - September 2025</p>
@@ -155,17 +156,17 @@ export default async function Home() {
           </div>
         </div>
       </FadeIn>
-      <div className="border-b border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
       </div>
 
-      <FadeIn className="border-b border-gray-200 w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full flex flex-col justify-between border-x border-gray-200">
+      <FadeIn className="w-screen flex justify-center" whileInView>
+        <div className="max-w-3xl h-fit w-full flex flex-col justify-between ">
           {articles.map((article) => (
             <Link
               key={article.slug}
               href={`/article/${article.slug}`}
-              className="not-last:border-b border-gray-200 px-4 py-2 hover:bg-gray-50 transition-colors cursor-pointer"
+              className="py-2 transition-colors cursor-pointer"
             >
               <p className="">{article.title}</p>
               <p className="text-black/50">
@@ -179,17 +180,14 @@ export default async function Home() {
           ))}
         </div>
       </FadeIn>
-      <div className="border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
       </div>
 
-      <FadeIn className="border-y border-gray-200 w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full flex flex-col justify-between border-x border-gray-200">
+      <FadeIn className="w-screen flex justify-center" whileInView>
+        <div className="max-w-3xl h-fit w-full flex flex-col justify-between ">
           {talks.map((talk) => (
-            <div
-              key={talk.id}
-              className="not-last:border-b border-gray-200 px-4 py-2"
-            >
+            <div key={talk.id} className="py-2">
               <p className="text-black/50">{talk.organization}</p>
               <div className="flex justify-between">
                 <p className="">{talk.title}</p>

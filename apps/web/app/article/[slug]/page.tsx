@@ -44,11 +44,11 @@ export default async function ArticlePage({
   }
 
   return (
-    <div className="flex flex-col py-4 relative">
-      <div className="border-y border-gray-200 sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl p-4 h-fit gap-8 w-full flex border-x border-gray-200">
+    <div className="flex flex-col relative">
+      <div className="sticky top-0 z-10 bg-white w-screen flex justify-center">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
           <Link href="/">
-            <p className="">~Start</p>
+            <p className="">Work</p>
           </Link>
           <Link href="/blog">
             <p className="font-bold">Blog</p>
@@ -59,8 +59,8 @@ export default async function ArticlePage({
         </div>
       </div>
 
-      <div className="border-b border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl px-8 py-12 w-full border-x border-gray-200">
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl px-8 py-12 w-full ">
           <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
           <p className="text-black/50 mb-8">
             {new Date(article.date).toLocaleDateString("en-US", {

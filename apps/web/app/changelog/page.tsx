@@ -14,7 +14,18 @@ export default function Changelog() {
       title: "Website launch",
       items: [
         "launched this website.",
-        <>launched <a href="https://www.producthunt.com/products/rippletide-eval-cli" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Rippletide CLI</a> on Product Hunt.</>,
+        <>
+          launched{" "}
+          <a
+            href="https://www.producthunt.com/products/rippletide-eval-cli"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            Rippletide CLI
+          </a>{" "}
+          on Product Hunt.
+        </>,
       ],
     },
     {
@@ -23,10 +34,43 @@ export default function Changelog() {
       items: [
         "got my first job.",
         "left my first job.",
-        <>joined an awesome team <a href="https://rippletide.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Rippletide</a>.</>,
-        <>made my first talk at ECB with <a href="https://eurotech-federation.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">EuroTech Federation</a>.</>,
+        <>
+          joined an awesome team{" "}
+          <a
+            href="https://rippletide.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            Rippletide
+          </a>
+          .
+        </>,
+        <>
+          made my first talk at ECB with{" "}
+          <a
+            href="https://eurotech-federation.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            EuroTech Federation
+          </a>
+          .
+        </>,
         "gave 10 % of my salary to high‑impact charities.",
-        <>organized 3 hackathons: 2 with <a href="https://rippletide.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Rippletide</a> (SF, virtual), 1 with Hack the Fork in Paris.</>,
+        <>
+          organized 3 hackathons: 2 with{" "}
+          <a
+            href="https://rippletide.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            Rippletide
+          </a>{" "}
+          (SF, virtual), 1 with Hack the Fork in Paris.
+        </>,
       ],
     },
     {
@@ -58,33 +102,27 @@ export default function Changelog() {
     {
       date: "January 10, 2016",
       title: "First steps in coding",
-      items: [
-        "started learning HTML.",
-      ],
+      items: ["started learning HTML."],
     },
     {
       date: "March 2014",
       title: "Chess victory",
-      items: [
-        "won 1st place at the departmental chess tournament.",
-      ],
+      items: ["won 1st place at the departmental chess tournament."],
     },
     {
       date: "January 5, 2006",
       title: "The beginning",
-      items: [
-        "I was born.",
-      ],
+      items: ["I was born."],
     },
   ];
 
   return (
-    <div className="flex flex-col py-4 relative">
+    <div className="flex flex-col pb-4 relative">
       {/* Navigation */}
-      <div className="border-y border-gray-200 sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl p-4 h-fit gap-8 w-full flex border-x border-gray-200">
+      <div className="top-0 z-10 bg-white w-screen flex justify-center">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
           <Link href="/">
-            <p className="">~Start</p>
+            <p className="">Work</p>
           </Link>
           <Link href="/blog">
             <p className="">Blog</p>
@@ -100,23 +138,25 @@ export default function Changelog() {
       />
 
       {/* Spacer */}
-      <div className="border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
       </div>
 
       {/* Changelog Items */}
       {changes.map((change, index) => (
         <div key={index}>
-          <div className="border-y border-gray-200 w-screen flex justify-center">
-            <div className="max-w-3xl h-fit w-full flex border-x border-gray-200">
+          <div className="w-screen flex justify-center">
+            <div className="max-w-3xl h-fit w-full flex ">
               {/* Left column: Date (Sticky) */}
-              <div className="flex flex-col p-4 min-w-[180px] sticky top-[57px] self-start bg-white">
+              <div className="flex flex-col py-4 min-w-[180px] sticky top-0 self-start bg-white">
                 <span className="text-black/70 text-sm">{change.date}</span>
               </div>
 
               {/* Right column: Description */}
               <div className="flex-1 p-4">
-                {change.title && <h2 className="font-semibold text-lg mb-3">{change.title}</h2>}
+                {change.title && (
+                  <h2 className="font-semibold text-lg mb-3">{change.title}</h2>
+                )}
                 <ul className="list-disc pl-5 text-black/70 flex flex-col gap-2">
                   {change.items.map((item, itemIndex) => (
                     <li key={itemIndex}>{item}</li>
@@ -128,7 +168,7 @@ export default function Changelog() {
           {/* Spacer between items */}
           {index < changes.length - 1 && (
             <div className="border-gray-200 w-screen flex justify-center">
-              <div className="max-w-3xl h-6 gap-12 w-full flex border-x border-gray-200"></div>
+              <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
             </div>
           )}
         </div>

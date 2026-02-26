@@ -12,11 +12,11 @@ export default async function BlogPage() {
   const articles = await getArticles();
 
   return (
-    <div className="flex flex-col py-4 relative">
-      <div className="border-y border-gray-200 sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl p-4 h-fit gap-8 w-full flex border-x border-gray-200">
+    <div className="flex flex-col pb-4 relative">
+      <div className="top-0 z-10 bg-white w-screen flex justify-center">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
           <Link href="/">
-            <p className="">~Start</p>
+            <p className="">Work</p>
           </Link>
           <p className="font-bold">Blog</p>
           <Link href="/changelog">
@@ -30,14 +30,14 @@ export default async function BlogPage() {
         description="Thoughts on building, learning, and shipping fast."
       />
 
-      <div className="border-b border-gray-200 w-screen flex justify-center">
-        <div className="max-w-3xl h-fit w-full flex flex-col justify-between border-x border-gray-200">
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-fit w-full flex flex-col justify-between ">
           {articles.length > 0 ? (
             articles.map((article) => (
               <Link
                 key={article.slug}
                 href={`/article/${article.slug}`}
-                className="not-last:border-b border-gray-200 px-4 py-2 hover:bg-gray-50 transition-colors cursor-pointer"
+                className="py-2 transition-colors cursor-pointer"
               >
                 <p className="">{article.title}</p>
                 <p className="text-black/50">
