@@ -14,7 +14,7 @@ export default async function BlogPage() {
   return (
     <div className="flex flex-col pb-4 relative">
       <div className="top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
           <Link href="/">
             <p className="">Work</p>
           </Link>
@@ -31,7 +31,7 @@ export default async function BlogPage() {
       />
 
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-fit w-full flex flex-col justify-between ">
+        <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
           {articles.length > 0 ? (
             articles.map((article) => (
               <Link

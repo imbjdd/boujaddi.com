@@ -36,7 +36,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col pb-4 relative">
       <div className="-sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
           <p className="font-bold">Work</p>
           <Link href="/blog">
             <p className="">Blog</p>
@@ -47,18 +47,20 @@ export default async function Home() {
         </div>
       </div>
       <FadeIn y={0} className="w-screen flex justify-center">
-        <div className="max-w-3xl rounded-lg h-52 gap-12 w-full flex  relative overflow-hidden">
-          <img
-            src="bg.png"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
+        <div className="max-w-3xl w-full px-4">
+          <div className="relative h-52 rounded-lg overflow-hidden">
+            <img
+              src="bg.png"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+          </div>
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn delay={0.15} className="w-screen flex justify-center">
-        <div className="max-w-3xl h-fit w-full flex ">
+        <div className="max-w-3xl h-fit w-full px-4 flex ">
           <div className="flex items-center h-fit w-fit justify-center">
             <img
               className="h-32 w-32 aspect-square rounded-lg transition-transform duration-300 hover:-rotate-4 hover:scale-102"
@@ -81,10 +83,10 @@ export default async function Home() {
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
       </div>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-fit gap-12 w-full flex ">
+        <div className="max-w-3xl h-fit gap-12 w-full px-4 flex ">
           <AnimatedList className="list-disc px-4 text-black/70 flex flex-col gap-2 py-2">
             <span>I love to build projects since I'm very young</span>
             <span>Speed is one of my main strenghts.</span>
@@ -103,10 +105,10 @@ export default async function Home() {
         </div>
       </div>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn className="w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full flex flex-col ">
+        <div className="max-w-3xl h-fit w-full px-4 flex flex-col ">
           <div className="h-fit w-full flex">
             <img
               className="ml-4 mr-8 my-4 w-16 h-16 transition-transform duration-300 hover:-rotate-20 hover:scale-102"
@@ -130,7 +132,7 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="max-w-3xl h-fit w-full flex">
+          <div className="h-fit w-full flex">
             <img
               className="ml-4 mr-8 my-4 w-16 h-16 transition-transform duration-300 hover:-rotate-8 hover:scale-102"
               src="/linkpact.jpeg"
@@ -149,7 +151,7 @@ export default async function Home() {
                 <span className="text-black/50 mr-2">
                   Internship and then full-time
                 </span>
-                I scoped projects, built AI agents with LoRA, and designed
+                {" "}I scoped projects, built AI agents with LoRA, and designed
                 benchmarks to evaluate their performance.
               </p>
             </div>
@@ -157,11 +159,11 @@ export default async function Home() {
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
       </div>
 
       <FadeIn className="w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full flex flex-col justify-between ">
+        <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
           {articles.map((article) => (
             <Link
               key={article.slug}
@@ -181,11 +183,11 @@ export default async function Home() {
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
       </div>
 
       <FadeIn className="w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full flex flex-col justify-between ">
+        <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
           {talks.map((talk) => (
             <div key={talk.id} className="py-2">
               <p className="text-black/50">{talk.organization}</p>

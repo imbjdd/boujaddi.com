@@ -46,7 +46,7 @@ export default async function ArticlePage({
   return (
     <div className="flex flex-col relative">
       <div className="sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
           <Link href="/">
             <p className="">Work</p>
           </Link>
@@ -60,7 +60,7 @@ export default async function ArticlePage({
       </div>
 
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl px-8 py-12 w-full ">
+        <div className="max-w-3xl px-4 md:px-8 py-12 w-full ">
           <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
           <p className="text-black/50 mb-8">
             {new Date(article.date).toLocaleDateString("en-US", {

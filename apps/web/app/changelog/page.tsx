@@ -120,7 +120,7 @@ export default function Changelog() {
     <div className="flex flex-col pb-4 relative">
       {/* Navigation */}
       <div className="top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full flex ">
+        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
           <Link href="/">
             <p className="">Work</p>
           </Link>
@@ -139,14 +139,14 @@ export default function Changelog() {
 
       {/* Spacer */}
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
       </div>
 
       {/* Changelog Items */}
       {changes.map((change, index) => (
         <div key={index}>
           <div className="w-screen flex justify-center">
-            <div className="max-w-3xl h-fit w-full flex ">
+            <div className="max-w-3xl h-fit w-full px-4 flex ">
               {/* Left column: Date (Sticky) */}
               <div className="flex flex-col py-4 min-w-[180px] sticky top-0 self-start bg-white">
                 <span className="text-black/70 text-sm">{change.date}</span>
@@ -168,7 +168,7 @@ export default function Changelog() {
           {/* Spacer between items */}
           {index < changes.length - 1 && (
             <div className="border-gray-200 w-screen flex justify-center">
-              <div className="max-w-3xl h-6 gap-12 w-full flex "></div>
+              <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
             </div>
           )}
         </div>
