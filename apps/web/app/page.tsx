@@ -46,16 +46,6 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-      <FadeIn y={0} className="w-screen flex justify-center">
-        <div className="max-w-3xl w-full px-4">
-          <div className="relative h-52 rounded-lg overflow-hidden">
-            <img
-              src="bg.png"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-          </div>
-        </div>
-      </FadeIn>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-8 gap-12 w-full px-4 flex "></div>
       </div>
