@@ -50,25 +50,17 @@ export default async function Home() {
         <div className="max-w-3xl h-8 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn delay={0.15} className="w-screen flex justify-center">
-        <div className="max-w-3xl h-fit w-full px-4 flex ">
+        <div className="max-w-3xl h-fit w-full px-4 flex items-end justify-between gap-8">
+          <div className="flex grow flex-col gap-1">
+            <p className="text-black/50 text-xs">Listening to Sam Sauvage</p>
+            <p className="font-bold text-2xl">Salim Boujaddi</p>
+            <p className="text-black/70">Product Engineer</p>
+          </div>
           <div className="flex items-center h-fit w-fit justify-center">
             <img
-              className="h-32 w-32 aspect-square rounded-lg transition-transform duration-300 hover:-rotate-4 hover:scale-102"
-              src="moi.jpeg"
+              className="h-40 w-40 aspect-square rounded-lg transition-transform duration-300 hover:-rotate-4 hover:scale-102"
+              src="unnamed.jpg"
             />
-          </div>
-          <div className="flex flex-col-reverse  grow">
-            <div className="px-4 py-1 w-full">
-              <p className="text-black/70">Product Engineer</p>
-            </div>
-            <div className="px-4 w-full">
-              <p className="font-bold text-2xl">Salim Boujaddi</p>
-            </div>
-            <div className="px-4 w-full">
-              <p className="text-black/50 text-xs mb-1">
-                Listening to Sam Sauvage
-              </p>
-            </div>
           </div>
         </div>
       </FadeIn>
