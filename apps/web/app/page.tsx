@@ -34,7 +34,7 @@ export default async function Home() {
   ];
 
   return (
-    <div className="flex flex-col pb-4 relative">
+    <div className="relative flex flex-col pb-10">
       <div className="-sticky top-0 z-10 bg-white w-screen flex justify-center">
         <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
           <p className="font-bold">Work</p>
@@ -57,7 +57,7 @@ export default async function Home() {
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
+        <div className="max-w-3xl h-8 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn delay={0.15} className="w-screen flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex ">
@@ -69,7 +69,7 @@ export default async function Home() {
           </div>
           <div className="flex flex-col-reverse  grow">
             <div className="px-4 py-1 w-full">
-              <p>Product Engineer</p>
+              <p className="text-black/70">Product Engineer</p>
             </div>
             <div className="px-4 w-full">
               <p className="font-bold text-2xl">Salim Boujaddi</p>
@@ -83,11 +83,11 @@ export default async function Home() {
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
+        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-fit gap-12 w-full px-4 flex ">
-          <AnimatedList className="list-disc px-4 text-black/70 flex flex-col gap-2 py-2">
+          <AnimatedList className="list-disc px-4 text-black/70 flex flex-col gap-3 py-3">
             <span>I love to build projects since I'm very young</span>
             <span>Speed is one of my main strenghts.</span>
             <span>
@@ -98,68 +98,40 @@ export default async function Home() {
               Polymath, I love to learn new things: GTM, UX, UI, Growth. I want
               to be <span className="italic">very</span> generalist.
             </span>
-            <span>I have an awesome girlfriend.</span>
             <span>I want my net worth to be 1 billion before I turn 30.</span>
             <span>I give 10% of my revenue to high impact charities.</span>
           </AnimatedList>
         </div>
       </div>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
+        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn className="w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full px-4 flex flex-col ">
-          <div className="h-fit w-full flex">
-            <img
-              className="ml-4 mr-8 my-4 w-16 h-16 transition-transform duration-300 hover:-rotate-20 hover:scale-102"
-              src="/rippletide.png"
-            />
-            <div className="flex flex-col w-full justify-center gap-2">
-              <div className="flex justify-between w-full">
-                <p>
-                  <span className="font-semibold text-black/80">
-                    Product Engineer
-                  </span>
-                  <span className="text-black/70">, Rippletide</span>
-                </p>
-                <p>
-                  Oct 2025 - <span className="blur">Jan 2042</span>
-                </p>
-              </div>
-              <p className="text-black/70">
-                I develop Rippletide's product, deliver solutions for clients,
-                organize hackathons, and deploy systems to production.
-              </p>
-            </div>
+        <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
+              <span className="font-semibold text-black/80">
+                Product Engineer
+              </span>
+              <span className="text-black/70">, Rippletide</span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              Oct 2025 - <span className="blur">Jan 2042</span>
+            </p>
           </div>
-          <div className="h-fit w-full flex">
-            <img
-              className="ml-4 mr-8 my-4 w-16 h-16 transition-transform duration-300 hover:-rotate-8 hover:scale-102"
-              src="/linkpact.jpeg"
-            />
-            <div className="flex flex-col w-full justify-center gap-2">
-              <div className="flex justify-between w-full">
-                <p>
-                  <span className="font-semibold text-black/80">
-                    AI Consultant
-                  </span>
-                  <span className="text-black/70">, LinkPact</span>
-                </p>
-                <p>June 2025 - September 2025</p>
-              </div>
-              <p className="text-black/70">
-                <span className="text-black/50 mr-2">
-                  Internship and then full-time
-                </span>
-                {" "}I scoped projects, built AI agents with LoRA, and designed
-                benchmarks to evaluate their performance.
-              </p>
-            </div>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
+              <span className="font-semibold text-black/80">AI Consultant</span>
+              <span className="text-black/70">, LinkPact</span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              June 2025 - September 2025
+            </p>
           </div>
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
+        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
 
       <FadeIn className="w-screen flex justify-center" whileInView>
@@ -168,7 +140,7 @@ export default async function Home() {
             <Link
               key={article.slug}
               href={`/article/${article.slug}`}
-              className="py-2 transition-colors cursor-pointer"
+              className="py-3 transition-colors cursor-pointer"
             >
               <p className="">{article.title}</p>
               <p className="text-black/50">
@@ -183,13 +155,13 @@ export default async function Home() {
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
+        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
 
       <FadeIn className="w-screen flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
           {talks.map((talk) => (
-            <div key={talk.id} className="py-2">
+            <div key={talk.id} className="py-3">
               <p className="text-black/50">{talk.organization}</p>
               <div className="flex justify-between">
                 <p className="">{talk.title}</p>
@@ -197,6 +169,37 @@ export default async function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </FadeIn>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
+      </div>
+      <FadeIn className="w-screen flex justify-center">
+        <div className="max-w-3xl h-fit w-full px-4 pb-2 flex gap-6 text-sm text-black/70">
+          <Link
+            href="https://x.com/salimboujaddi"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors hover:text-black"
+          >
+            X
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/salim-boujaddi/"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors hover:text-black"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href="https://github.com/imbjdd"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors hover:text-black"
+          >
+            GitHub
+          </Link>
         </div>
       </FadeIn>
     </div>
