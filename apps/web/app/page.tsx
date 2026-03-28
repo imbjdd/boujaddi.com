@@ -1,13 +1,11 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import { getArticles } from "../lib/articles";
-import { getRecentFilms } from "../lib/letterboxd";
-import { MoviesHover } from "./movies-hover";
 import { FadeIn } from "./fade-in";
-import { AnimatedList } from "./animated-list";
 import Link from "next/link";
 import { Metadata } from "next";
 import { HackathonAtlasBanner } from "./hackathon-atlas-banner";
+import { Navbar } from "./navbar";
 
 export const metadata: Metadata = {
   title: "Salim Boujaddi - Product Engineer",
@@ -17,36 +15,28 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const articles = await getArticles();
-  const films = await getRecentFilms("grandefourchett", 3);
 
   const talks = [
     {
-      id: 1,
-      organization: "European Central Bank",
-      title: "AI Agents: Transforming Central Banking for the Digital Age",
-      date: "October 8, 2025",
+      title: "AI Agents: Transforming Central Banking",
+      subtitle: "European Central Bank",
+      date: "2025-10-08",
     },
     {
-      id: 2,
-      organization: "Hack the Fork",
       title: "Workshop: Idea brainstorming with several mentors",
-      date: "December 13, 2025",
+      subtitle: "Hack the Fork",
+      date: "2025-12-13",
     },
   ];
 
+  const allItems = [
+    ...articles.map((a) => ({ title: a.title, subtitle: null, date: a.date, href: `/article/${a.slug}` })),
+    ...talks.map((t) => ({ title: t.title, subtitle: t.subtitle, date: t.date, href: null })),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return (
     <div className="relative flex flex-col pb-10">
-      <div className="-sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
-          <p className="font-bold">Work</p>
-          <Link href="/blog">
-            <p className="">Blog</p>
-          </Link>
-          <Link href="/changelog">
-            <p className="">Changelog</p>
-          </Link>
-        </div>
-      </div>
+      <Navbar />
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-8 gap-12 w-full px-4 flex "></div>
       </div>
@@ -68,24 +58,15 @@ export default async function Home() {
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-fit gap-12 w-full px-4 flex ">
-          <AnimatedList className="list-disc px-4 text-black/70 flex flex-col gap-3 py-3">
-            <span>I love to build projects since I'm very young</span>
-            <span>Speed is one of my main strenghts.</span>
-            <span>
-              I like to occasionaly play chess and started to watch{" "}
-              <MoviesHover films={films} />
-            </span>
-            <span>
-              Polymath, I love to learn new things: GTM, UX, UI, Growth. I want
-              to be <span className="italic">very</span> generalist.
-            </span>
-            <span>I want my net worth to be 1 billion before I turn 30.</span>
-            <span>I give 10% of my revenue to high impact charities.</span>
-          </AnimatedList>
-        </div>
-      </div>
+      <FadeIn className="w-screen flex justify-center" whileInView>
+        <Link href="https://hackathonatlas.com/" target="_blank" rel="noreferrer" className="max-w-3xl h-fit w-full px-4 flex flex-col gap-3">
+          <HackathonAtlasBanner />
+          <div>
+            <p className="font-semibold text-black/80">A comprehensive directory of hackathons from around the world</p>
+            <p className="text-sm text-black/50">2026</p>
+          </div>
+        </Link>
+      </FadeIn>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
@@ -99,7 +80,7 @@ export default async function Home() {
               <span className="text-black/70">, Rippletide</span>
             </p>
             <p className="shrink-0 text-sm text-black/50">
-              Oct 2025 - <span className="blur">Jan 2042</span>
+              Oct 2025 - April 2026
             </p>
           </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
@@ -118,53 +99,31 @@ export default async function Home() {
       </div>
 
       <FadeIn className="w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
-          {articles.map((article) => (
-            <Link
-              key={article.slug}
-              href={`/article/${article.slug}`}
-              className="py-3 transition-colors cursor-pointer"
-            >
-              <p className="">{article.title}</p>
-              <p className="text-black/50">
-                {new Date(article.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </FadeIn>
-      <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
-      </div>
-
-      <FadeIn className="w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
-          {talks.map((talk) => (
-            <div key={talk.id} className="py-3">
-              <p className="text-black/50">{talk.organization}</p>
-              <div className="flex justify-between">
-                <p className="">{talk.title}</p>
-                <p className="text-black/50">{talk.date}</p>
+        <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
+          {allItems.map((item) => {
+            const date = new Date(item.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            });
+            const content = (
+              <div className="py-3 flex justify-between">
+                <p className="pr-4">
+                  {item.subtitle && <span className="text-black/50">{item.subtitle}, </span>}
+                  {item.title}
+                </p>
+                <p className="shrink-0 text-black/50">{date}</p>
               </div>
-            </div>
-          ))}
+            );
+            return item.href ? (
+              <Link key={item.title} href={item.href} className="transition-colors cursor-pointer">
+                {content}
+              </Link>
+            ) : (
+              <div key={item.title}>{content}</div>
+            );
+          })}
         </div>
-      </FadeIn>
-      <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
-      </div>
-      <FadeIn className="w-screen flex justify-center" whileInView>
-        <Link href="https://hackathonatlas.com/" target="_blank" rel="noreferrer" className="max-w-3xl h-fit w-full px-4 flex flex-col gap-3">
-          <HackathonAtlasBanner />
-          <div>
-            <p className="font-semibold text-black/80">A comprehensive directory of hackathons from around the world</p>
-            <p className="text-sm text-black/50">2026</p>
-          </div>
-        </Link>
       </FadeIn>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>

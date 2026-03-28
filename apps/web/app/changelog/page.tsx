@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "../../components/PageHero";
+import { Navbar } from "../navbar";
 
 export const metadata: Metadata = {
   title: "Changelog - Salim Boujaddi",
@@ -118,18 +119,7 @@ export default function Changelog() {
 
   return (
     <div className="flex flex-col pb-4 relative">
-      {/* Navigation */}
-      <div className="top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
-          <Link href="/">
-            <p className="">Work</p>
-          </Link>
-          <Link href="/blog">
-            <p className="">Blog</p>
-          </Link>
-          <p className="font-bold">Changelog</p>
-        </div>
-      </div>
+      <Navbar />
 
       {/* Header */}
       <PageHero

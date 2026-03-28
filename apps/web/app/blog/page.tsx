@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getArticles } from "../../lib/articles";
 import { Metadata } from "next";
 import { PageHero } from "../../components/PageHero";
+import { Navbar } from "../navbar";
 
 export const metadata: Metadata = {
   title: "Blog - Salim Boujaddi",
@@ -13,17 +14,7 @@ export default async function BlogPage() {
 
   return (
     <div className="flex flex-col pb-4 relative">
-      <div className="top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
-          <Link href="/">
-            <p className="">Work</p>
-          </Link>
-          <p className="font-bold">Blog</p>
-          <Link href="/changelog">
-            <p className="">Changelog</p>
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
       <PageHero
         title="Blog"

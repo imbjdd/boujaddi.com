@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { Navbar } from "../../navbar";
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -45,19 +46,7 @@ export default async function ArticlePage({
 
   return (
     <div className="flex flex-col relative">
-      <div className="sticky top-0 z-10 bg-white w-screen flex justify-center">
-        <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex ">
-          <Link href="/">
-            <p className="">Work</p>
-          </Link>
-          <Link href="/blog">
-            <p className="font-bold">Blog</p>
-          </Link>
-          <Link href="/changelog">
-            <p className="">Changelog</p>
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl px-4 md:px-8 py-12 w-full ">
