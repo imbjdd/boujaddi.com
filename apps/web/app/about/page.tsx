@@ -17,17 +17,13 @@ export default async function About() {
   return (
     <div className="relative flex flex-col pb-10">
       <Navbar />
+
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-8 gap-12 w-full px-4 flex "></div>
-      </div>
-      <FadeIn delay={0.15} className="w-screen flex justify-center">
-        <div className="max-w-3xl h-fit w-full px-4">
-          <p className="font-bold text-2xl">About</p>
+        <div className="max-w-3xl w-full px-4 py-4">
+          <p className="text-black/50">A bit about me.</p>
         </div>
-      </FadeIn>
-      <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
+
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-fit gap-12 w-full px-4 flex ">
           <AnimatedList className="list-disc px-4 text-black/70 flex flex-col gap-3 py-3">

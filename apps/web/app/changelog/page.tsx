@@ -121,15 +121,10 @@ export default function Changelog() {
     <div className="flex flex-col pb-4 relative">
       <Navbar />
 
-      {/* Header */}
-      <PageHero
-        title="Changelog"
-        description="A timeline of my life and work."
-      />
-
-      {/* Spacer */}
       <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-6 gap-12 w-full px-4 flex "></div>
+        <div className="max-w-3xl w-full px-4 py-4">
+          <p className="text-black/50">A timeline of my life and work.</p>
+        </div>
       </div>
 
       {/* Changelog Items */}

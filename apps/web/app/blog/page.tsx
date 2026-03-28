@@ -16,10 +16,11 @@ export default async function BlogPage() {
     <div className="flex flex-col pb-4 relative">
       <Navbar />
 
-      <PageHero
-        title="Blog"
-        description="Thoughts on building, learning, and shipping fast."
-      />
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl w-full px-4 py-4">
+          <p className="text-black/50">Thoughts on building, learning, and shipping fast.</p>
+        </div>
+      </div>
 
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
