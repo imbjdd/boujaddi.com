@@ -7,6 +7,7 @@ import { FadeIn } from "./fade-in";
 import { AnimatedList } from "./animated-list";
 import Link from "next/link";
 import { Metadata } from "next";
+import { HackathonAtlasBanner } from "./hackathon-atlas-banner";
 
 export const metadata: Metadata = {
   title: "Salim Boujaddi - Product Engineer",
@@ -152,6 +153,18 @@ export default async function Home() {
             </div>
           ))}
         </div>
+      </FadeIn>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
+      </div>
+      <FadeIn className="w-screen flex justify-center" whileInView>
+        <Link href="https://hackathonatlas.com/" target="_blank" rel="noreferrer" className="max-w-3xl h-fit w-full px-4 flex flex-col gap-3">
+          <HackathonAtlasBanner />
+          <div>
+            <p className="font-semibold text-black/80">A comprehensive directory of hackathons from around the world</p>
+            <p className="text-sm text-black/50">2026</p>
+          </div>
+        </Link>
       </FadeIn>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>

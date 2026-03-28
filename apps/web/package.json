@@ -11,6 +11,7 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@paper-design/shaders-react": "0.0.72",
     "@portabletext/react": "^6.0.2",
     "@repo/ui": "*",
     "@sanity/client": "^7.14.1",
