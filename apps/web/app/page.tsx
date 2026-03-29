@@ -1,11 +1,13 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import { getArticles } from "../lib/articles";
+import { getNowPlaying, getRecentlyPlayed } from "../lib/spotify";
 import { FadeIn } from "./fade-in";
 import Link from "next/link";
 import { Metadata } from "next";
 import { HackathonAtlasBanner } from "./hackathon-atlas-banner";
 import { Navbar } from "./navbar";
+import { SpotifyStatus } from "./spotify-status";
 
 export const metadata: Metadata = {
   title: "Salim Boujaddi - Product Engineer",
@@ -15,6 +17,8 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const articles = await getArticles();
+  const nowPlaying = await getNowPlaying();
+  const recent = nowPlaying?.isPlaying ? null : await getRecentlyPlayed();
 
   const talks = [
     {
@@ -43,7 +47,9 @@ export default async function Home() {
       <FadeIn delay={0.15} className="w-screen flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex items-end justify-between gap-8">
           <div className="flex grow flex-col gap-1">
-            <p className="text-black/50 text-xs">Listening to Sam Sauvage</p>
+            <p className="text-black/50 text-xs">
+              <SpotifyStatus initial={{ nowPlaying, recent }} />
+            </p>
             <p className="font-bold text-2xl">Salim Boujaddi</p>
             <p className="text-black/70">Product Engineer</p>
           </div>
