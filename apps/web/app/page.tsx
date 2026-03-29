@@ -59,6 +59,16 @@ export default async function Home() {
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn className="w-screen flex justify-center" whileInView>
+        <div className="max-w-3xl h-fit w-full px-4 flex flex-col gap-4 text-black/70">
+          <p>I'm a product engineer focused on building and shipping AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.</p>
+          <p>I've worked on AI projects as both a builder and consultant, and spoke at the <a href="https://www.ecb.europa.eu/" target="_blank" rel="noreferrer" className="underline hover:text-black">European Central Bank</a> about AI agents and their impact on institutions.</p>
+          <p>Outside of that, I like experimenting, shipping small projects, and exploring new ideas around AI and product.</p>
+        </div>
+      </FadeIn>
+      <div className="w-screen flex justify-center">
+        <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
+      </div>
+      <FadeIn className="w-screen flex justify-center" whileInView>
         <Link href="https://hackathonatlas.com/" target="_blank" rel="noreferrer" className="max-w-3xl h-fit w-full px-4 flex flex-col gap-3">
           <HackathonAtlasBanner />
           <div>
