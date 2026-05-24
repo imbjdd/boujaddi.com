@@ -1,4 +1,3 @@
-import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import { getArticles } from "../lib/articles";
 import { getNowPlaying, getRecentlyPlayed } from "../lib/spotify";
@@ -52,12 +51,6 @@ export default async function Home() {
             </p>
             <p className="font-bold text-2xl">Salim Boujaddi</p>
             <p className="text-black/70">Product Engineer</p>
-          </div>
-          <div className="flex items-center h-fit w-fit justify-center">
-            <img
-              className="h-40 w-40 aspect-square rounded-lg transition-transform duration-300 hover:-rotate-4 hover:scale-102"
-              src="unnamed.jpg"
-            />
           </div>
         </div>
       </FadeIn>
