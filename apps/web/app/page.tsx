@@ -94,6 +94,17 @@ export default async function Home() {
           </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
             <p className="pr-4">
+              <span className="font-semibold text-black/80">
+                Product Engineer
+              </span>
+              <span className="text-black/70">, TrendTrack</span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              January 2026 - March 2026
+            </p>
+          </div>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
               <span className="font-semibold text-black/80">AI Consultant</span>
               <span className="text-black/70">, LinkPact</span>
             </p>
