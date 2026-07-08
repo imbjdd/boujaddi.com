@@ -11,6 +11,11 @@ export const metadata: Metadata = {
 export default function Changelog() {
   const changes = [
     {
+      date: "July 8, 2026",
+      title: "Life update",
+      items: ["got an awesome girlfriend."],
+    },
+    {
       date: "February 9, 2026",
       title: "Website launch",
       items: [
@@ -80,7 +85,6 @@ export default function Changelog() {
       items: [
         "won some hackathons.",
         "dropped out of university.",
-        "got an awesome girlfriend.",
         "got my first internship.",
       ],
     },
