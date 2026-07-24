@@ -4,8 +4,9 @@ import { getNowPlaying, getRecentlyPlayed } from "../lib/spotify";
 import { FadeIn } from "./fade-in";
 import Link from "next/link";
 import { Metadata } from "next";
-import { HackathonAtlasBanner } from "./hackathon-atlas-banner";
 import { Navbar } from "./navbar";
+import { Projects } from "./projects";
+import { SectionLabel } from "./section-label";
 import { SpotifyStatus } from "./spotify-status";
 
 export const metadata: Metadata = {
@@ -13,6 +14,52 @@ export const metadata: Metadata = {
   description:
     "Product Engineer building fast. I love hackathons, speed, and shipping products.",
 };
+
+type ListItem = {
+  title: string;
+  subtitle: string | null;
+  date: string;
+  href: string | null;
+};
+
+const byDateDesc = (a: ListItem, b: ListItem) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime();
+
+function ItemList({ items }: { items: ListItem[] }) {
+  return (
+    <>
+      {items.map((item) => {
+        const date = new Date(item.date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+        const content = (
+          <div className="py-3 flex justify-between">
+            <p className="pr-4">
+              {item.subtitle && (
+                <span className="text-black/50">{item.subtitle}, </span>
+              )}
+              {item.title}
+            </p>
+            <p className="shrink-0 text-black/50">{date}</p>
+          </div>
+        );
+        return item.href ? (
+          <Link
+            key={item.title}
+            href={item.href}
+            className="transition-colors cursor-pointer"
+          >
+            {content}
+          </Link>
+        ) : (
+          <div key={item.title}>{content}</div>
+        );
+      })}
+    </>
+  );
+}
 
 export default async function Home() {
   const articles = await getArticles();
@@ -32,10 +79,23 @@ export default async function Home() {
     },
   ];
 
-  const allItems = [
-    ...articles.map((a) => ({ title: a.title, subtitle: null, date: a.date, href: `/article/${a.slug}` })),
-    ...talks.map((t) => ({ title: t.title, subtitle: t.subtitle, date: t.date, href: null })),
-  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const articleItems: ListItem[] = articles
+    .map((a) => ({
+      title: a.title,
+      subtitle: null,
+      date: a.date,
+      href: `/article/${a.slug}`,
+    }))
+    .sort(byDateDesc);
+
+  const talkItems: ListItem[] = talks
+    .map((t) => ({
+      title: t.title,
+      subtitle: t.subtitle,
+      date: t.date,
+      href: null,
+    }))
+    .sort(byDateDesc);
 
   return (
     <div className="relative flex flex-col pb-10">
@@ -68,26 +128,50 @@ export default async function Home() {
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn className="w-screen flex justify-center" whileInView>
-        <Link href="https://hackathonatlas.com/" target="_blank" rel="noreferrer" className="max-w-3xl h-fit w-full px-4 flex flex-col gap-3">
-          <HackathonAtlasBanner />
-          <div>
-            <p className="font-semibold text-black/80">A comprehensive directory of hackathons from around the world</p>
-            <p className="text-sm text-black/50">2026</p>
-          </div>
-        </Link>
+        <Projects />
       </FadeIn>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
       <FadeIn className="w-screen flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
+          <SectionLabel>EXPERIENCE</SectionLabel>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
+              <span className="font-semibold text-black/80">Firedog</span>
+              <span className="text-black/70">, Co-founder & CTO</span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              Jul 2026 - Present
+            </p>
+          </div>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
+              <span className="font-semibold text-black/80">Stairling</span>
+              <span className="text-black/70">, AI Engineer</span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              May 2026 - Jul 2026
+            </p>
+          </div>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
+              <span className="font-semibold text-black/80">Stealth</span>
+              <span className="text-black/70">
+                , Member of Technical Staff — RL environments
+              </span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              Apr 2026 - Jun 2026
+            </p>
+          </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
             <p className="pr-4">
               <span className="font-semibold text-black/80">Rippletide</span>
               <span className="text-black/70">, Product Engineer</span>
             </p>
             <p className="shrink-0 text-sm text-black/50">
-              Oct 2025 - April 2026
+              Oct 2025 - Apr 2026
             </p>
           </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
@@ -96,7 +180,7 @@ export default async function Home() {
               <span className="text-black/70">, Product Engineer</span>
             </p>
             <p className="shrink-0 text-sm text-black/50">
-              January 2026 - March 2026
+              Jan 2026 - Mar 2026
             </p>
           </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
@@ -105,7 +189,7 @@ export default async function Home() {
               <span className="text-black/70">, AI Consultant</span>
             </p>
             <p className="shrink-0 text-sm text-black/50">
-              June 2025 - September 2025
+              Jun 2025 - Sep 2025
             </p>
           </div>
         </div>
@@ -114,31 +198,23 @@ export default async function Home() {
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
 
+      {articleItems.length > 0 && (
+        <>
+          <FadeIn className="w-screen flex justify-center" whileInView>
+            <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
+              <SectionLabel>ARTICLES</SectionLabel>
+              <ItemList items={articleItems} />
+            </div>
+          </FadeIn>
+          <div className="w-screen flex justify-center">
+            <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
+          </div>
+        </>
+      )}
       <FadeIn className="w-screen flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
-          {allItems.map((item) => {
-            const date = new Date(item.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            });
-            const content = (
-              <div className="py-3 flex justify-between">
-                <p className="pr-4">
-                  {item.subtitle && <span className="text-black/50">{item.subtitle}, </span>}
-                  {item.title}
-                </p>
-                <p className="shrink-0 text-black/50">{date}</p>
-              </div>
-            );
-            return item.href ? (
-              <Link key={item.title} href={item.href} className="transition-colors cursor-pointer">
-                {content}
-              </Link>
-            ) : (
-              <div key={item.title}>{content}</div>
-            );
-          })}
+          <SectionLabel>TALKS</SectionLabel>
+          <ItemList items={talkItems} />
         </div>
       </FadeIn>
       <div className="w-screen flex justify-center">
