@@ -83,11 +83,40 @@ export default async function Home() {
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
           <div className="flex w-full items-start justify-between gap-4 py-3">
             <p className="pr-4">
+              <span className="font-semibold text-black/80">Firedog</span>
+              <span className="text-black/70">, Co-founder & CTO</span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              Jul 2026 - Present
+            </p>
+          </div>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
+              <span className="font-semibold text-black/80">Stairling</span>
+              <span className="text-black/70">, AI Engineer</span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              May 2026 - Jul 2026
+            </p>
+          </div>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
+              <span className="font-semibold text-black/80">Stealth</span>
+              <span className="text-black/70">
+                , Member of Technical Staff — RL environments
+              </span>
+            </p>
+            <p className="shrink-0 text-sm text-black/50">
+              Apr 2026 - Jun 2026
+            </p>
+          </div>
+          <div className="flex w-full items-start justify-between gap-4 py-3">
+            <p className="pr-4">
               <span className="font-semibold text-black/80">Rippletide</span>
               <span className="text-black/70">, Product Engineer</span>
             </p>
             <p className="shrink-0 text-sm text-black/50">
-              Oct 2025 - April 2026
+              Oct 2025 - Apr 2026
             </p>
           </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
@@ -96,7 +125,7 @@ export default async function Home() {
               <span className="text-black/70">, Product Engineer</span>
             </p>
             <p className="shrink-0 text-sm text-black/50">
-              January 2026 - March 2026
+              Jan 2026 - Mar 2026
             </p>
           </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
@@ -105,7 +134,7 @@ export default async function Home() {
               <span className="text-black/70">, AI Consultant</span>
             </p>
             <p className="shrink-0 text-sm text-black/50">
-              June 2025 - September 2025
+              Jun 2025 - Sep 2025
             </p>
           </div>
         </div>
