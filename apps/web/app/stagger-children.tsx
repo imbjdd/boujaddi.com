@@ -7,12 +7,14 @@ export function StaggerChildren({
   children,
   className,
   childClassName,
+  delay = 0,
   staggerDelay = 0.06,
   whileInView = false,
 }: {
   children: ReactNode;
   className?: string;
   childClassName?: string;
+  delay?: number;
   staggerDelay?: number;
   whileInView?: boolean;
 }) {
@@ -26,7 +28,7 @@ export function StaggerChildren({
               viewport: { once: true, margin: "-30px" as const },
               transition: {
                 duration: 0.4,
-                delay: index * staggerDelay,
+                delay: delay + index * staggerDelay,
                 ease: "easeOut" as const,
               },
             }
@@ -35,7 +37,7 @@ export function StaggerChildren({
               animate: { opacity: 1, y: 0 } as const,
               transition: {
                 duration: 0.4,
-                delay: index * staggerDelay,
+                delay: delay + index * staggerDelay,
                 ease: "easeOut" as const,
               },
             };

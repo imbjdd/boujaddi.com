@@ -8,6 +8,7 @@ import { Navbar } from "./navbar";
 import { Projects } from "./projects";
 import { SectionLabel } from "./section-label";
 import { SpotifyStatus } from "./spotify-status";
+import { StaggerChildren } from "./stagger-children";
 
 export const metadata: Metadata = {
   title: "Salim Boujaddi - Product Engineer",
@@ -99,25 +100,31 @@ export default async function Home() {
 
   return (
     <div className="relative flex flex-col pb-10">
-      <Navbar />
+      <FadeIn y={-8}>
+        <Navbar />
+      </FadeIn>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-8 gap-12 w-full px-4 flex "></div>
       </div>
-      <FadeIn delay={0.15} className="w-screen flex justify-center">
+      <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex items-end justify-between gap-8">
-          <div className="flex grow flex-col gap-1">
+          <StaggerChildren
+            className="flex grow flex-col gap-1"
+            delay={0.14}
+            staggerDelay={0.08}
+          >
             <p className="text-black/50 text-xs">
               <SpotifyStatus initial={{ nowPlaying, recent }} />
             </p>
             <p className="font-bold text-2xl">Salim Boujaddi</p>
             <p className="text-black/70">Product Engineer</p>
-          </div>
+          </StaggerChildren>
         </div>
-      </FadeIn>
+      </div>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <FadeIn className="w-screen flex justify-center" whileInView>
+      <FadeIn delay={0.42} className="w-screen flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col gap-4 text-black/70">
           <p>I'm a product engineer focused on building and shipping AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.</p>
           <p>I've worked on AI projects as both a builder and consultant, and spoke at the <a href="https://www.ecb.europa.eu/" target="_blank" rel="noreferrer" className="underline hover:text-black">European Central Bank</a> about AI agents and their impact on institutions.</p>
@@ -127,9 +134,9 @@ export default async function Home() {
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <FadeIn className="w-screen flex justify-center" whileInView>
+      <div className="w-screen flex justify-center">
         <Projects />
-      </FadeIn>
+      </div>
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
@@ -220,7 +227,7 @@ export default async function Home() {
       <div className="w-screen flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <FadeIn className="w-screen flex justify-center">
+      <FadeIn className="w-screen flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full px-4 pb-2 flex gap-6 text-sm text-black/70">
           <Link
             href="https://x.com/salimboujaddi"
