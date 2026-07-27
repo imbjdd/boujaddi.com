@@ -1,14 +1,17 @@
 import Link from "next/link";
+import { FadeIn } from "./fade-in";
+import { StaggerChildren } from "./stagger-children";
 
 export function Projects() {
   return (
     <div className="max-w-3xl h-fit w-full px-4 flex flex-col gap-6">
-      <Link
-        href="https://firedog.finance"
-        target="_blank"
-        rel="noreferrer"
-        className="flex flex-col gap-3"
-      >
+      <FadeIn whileInView>
+        <Link
+          href="https://firedog.finance"
+          target="_blank"
+          rel="noreferrer"
+          className="flex flex-col gap-3"
+        >
         <div className="relative w-full aspect-video rounded-lg overflow-hidden flex items-center justify-center bg-black">
           <video
             src="/result.mp4"
@@ -23,20 +26,27 @@ export function Projects() {
             Firedog
           </p>
         </div>
-        <div>
-          <p className="font-semibold text-black/80">
-            AI cost intelligence for every company
-          </p>
-          <p className="text-sm text-black/50">firedog.finance</p>
-        </div>
-      </Link>
+          <div>
+            <p className="font-semibold text-black/80">
+              AI cost intelligence for every company
+            </p>
+            <p className="text-sm text-black/50">firedog.finance</p>
+          </div>
+        </Link>
+      </FadeIn>
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      <StaggerChildren
+        className="flex flex-col sm:flex-row gap-4"
+        childClassName="flex-1"
+        whileInView
+        delay={0.12}
+        staggerDelay={0.1}
+      >
         <Link
           href="https://hackathonatlas.com/"
           target="_blank"
           rel="noreferrer"
-          className="flex-1 flex flex-col gap-3"
+          className="flex flex-col gap-3"
         >
           <div className="relative w-full aspect-video rounded-lg overflow-hidden flex items-center justify-center bg-black">
             <video
@@ -64,7 +74,7 @@ export function Projects() {
           href="https://apps.apple.com/us/app/breathe-breathing-light-guide/id6762678044"
           target="_blank"
           rel="noreferrer"
-          className="flex-1 flex flex-col gap-3"
+          className="flex flex-col gap-3"
         >
           <div className="relative w-full aspect-video rounded-lg overflow-hidden flex items-center justify-center bg-black">
             <video
@@ -87,7 +97,7 @@ export function Projects() {
             <p className="text-sm text-black/50">App Store · iOS</p>
           </div>
         </Link>
-      </div>
+      </StaggerChildren>
     </div>
   );
 }
