@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "prettier": "^3.7.4",
+    "tailwindcss": "^4.1.18",
     "turbo": "^2.8.2",
     "typescript": "5.9.2"
   },
