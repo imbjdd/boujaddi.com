@@ -2,6 +2,8 @@
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
     "declaration": false,
+    "declarationMap": false,
+    "noUncheckedIndexedAccess": false,
     "paths": {
       "@/*": ["./*"]
     },
