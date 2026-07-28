@@ -1,10 +1,43 @@
-const client_id = process.env.SPOTIFY_CLIENT_ID!;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET!;
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN!;
+const clientId = process.env.SPOTIFY_CLIENT_ID;
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
 
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
+export type NowPlaying = {
+  isPlaying: boolean;
+  title?: string;
+  artist?: string;
+  url?: string;
+};
 
-async function getAccessToken() {
+export type RecentTrack = {
+  title: string;
+  artist: string;
+  url: string;
+};
+
+type SpotifyArtist = { name: string };
+
+type SpotifyTrack = {
+  name: string;
+  artists: SpotifyArtist[];
+  external_urls: { spotify: string };
+};
+
+/**
+ * Access tokens live an hour, so keep the last one around instead of paying a
+ * token round trip on every call. Refreshed a minute early so a token can't
+ * expire between here and the API call that uses it.
+ */
+let cachedToken: { value: string; expiresAt: number } | null = null;
+
+async function getAccessToken(): Promise<string | null> {
+  if (!clientId || !clientSecret || !refreshToken) return null;
+  if (cachedToken && cachedToken.expiresAt > Date.now()) {
+    return cachedToken.value;
+  }
+
+  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
@@ -13,25 +46,38 @@ async function getAccessToken() {
     },
     body: new URLSearchParams({
       grant_type: "refresh_token",
-      refresh_token,
+      refresh_token: refreshToken,
     }),
+    cache: "no-store",
   });
 
-  return response.json();
+  if (!response.ok) {
+    cachedToken = null;
+    return null;
+  }
+
+  const data = await response.json();
+  if (!data.access_token) return null;
+
+  cachedToken = {
+    value: data.access_token,
+    expiresAt: Date.now() + (data.expires_in ?? 3600) * 1000 - 60_000,
+  };
+
+  return cachedToken.value;
 }
 
-export async function getNowPlaying(): Promise<{
-  isPlaying: boolean;
-  title?: string;
-  artist?: string;
-  url?: string;
-} | null> {
-  const { access_token } = await getAccessToken();
+const artistNames = (artists: SpotifyArtist[]) =>
+  artists.map((artist) => artist.name).join(", ");
+
+export async function getNowPlaying(): Promise<NowPlaying | null> {
+  const accessToken = await getAccessToken();
+  if (!accessToken) return null;
 
   const response = await fetch(
     "https://api.spotify.com/v1/me/player/currently-playing",
     {
-      headers: { Authorization: `Bearer ${access_token}` },
+      headers: { Authorization: `Bearer ${accessToken}` },
       next: { revalidate: 30 },
     }
   );
@@ -46,25 +92,24 @@ export async function getNowPlaying(): Promise<{
     return { isPlaying: false };
   }
 
+  const item = data.item as SpotifyTrack;
+
   return {
     isPlaying: true,
-    title: data.item.name,
-    artist: data.item.artists.map((a: any) => a.name).join(", "),
-    url: data.item.external_urls.spotify,
+    title: item.name,
+    artist: artistNames(item.artists),
+    url: item.external_urls.spotify,
   };
 }
 
-export async function getRecentlyPlayed(): Promise<{
-  title: string;
-  artist: string;
-  url: string;
-} | null> {
-  const { access_token } = await getAccessToken();
+export async function getRecentlyPlayed(): Promise<RecentTrack | null> {
+  const accessToken = await getAccessToken();
+  if (!accessToken) return null;
 
   const response = await fetch(
     "https://api.spotify.com/v1/me/player/recently-played?limit=1",
     {
-      headers: { Authorization: `Bearer ${access_token}` },
+      headers: { Authorization: `Bearer ${accessToken}` },
       next: { revalidate: 60 },
     }
   );
@@ -72,13 +117,13 @@ export async function getRecentlyPlayed(): Promise<{
   if (!response.ok) return null;
 
   const data = await response.json();
-  const track = data.items?.[0]?.track;
+  const track = data.items?.[0]?.track as SpotifyTrack | undefined;
 
   if (!track) return null;
 
   return {
     title: track.name,
-    artist: track.artists.map((a: any) => a.name).join(", "),
+    artist: artistNames(track.artists),
     url: track.external_urls.spotify,
   };
 }

@@ -1,4 +1,5 @@
 import { Button } from "@repo/ui/button";
+import { Suspense } from "react";
 import { getArticles } from "../lib/articles";
 import { getNowPlaying, getRecentlyPlayed } from "../lib/spotify";
 import { FadeIn } from "./fade-in";
@@ -15,6 +16,17 @@ export const metadata: Metadata = {
   description:
     "Product Engineer building fast. I love hackathons, speed, and shipping products.",
 };
+
+/**
+ * Streamed separately so the page shell doesn't wait on Spotify's API before
+ * flushing its first byte.
+ */
+async function SpotifyStatusSlot() {
+  const nowPlaying = await getNowPlaying();
+  const recent = nowPlaying?.isPlaying ? null : await getRecentlyPlayed();
+
+  return <SpotifyStatus initial={{ nowPlaying, recent }} />;
+}
 
 type ListItem = {
   title: string;
@@ -64,8 +76,6 @@ function ItemList({ items }: { items: ListItem[] }) {
 
 export default async function Home() {
   const articles = await getArticles();
-  const nowPlaying = await getNowPlaying();
-  const recent = nowPlaying?.isPlaying ? null : await getRecentlyPlayed();
 
   const talks = [
     {
@@ -113,8 +123,10 @@ export default async function Home() {
             delay={0.14}
             staggerDelay={0.08}
           >
-            <p className="text-black/50 text-xs">
-              <SpotifyStatus initial={{ nowPlaying, recent }} />
+            <p className="text-black/50 text-xs min-h-4">
+              <Suspense fallback={null}>
+                <SpotifyStatusSlot />
+              </Suspense>
             </p>
             <p className="font-bold text-2xl">Salim Boujaddi</p>
             <p className="text-black/70">Product Engineer</p>
