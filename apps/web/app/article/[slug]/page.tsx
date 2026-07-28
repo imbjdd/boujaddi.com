@@ -6,6 +6,8 @@ import { Navbar } from "../../navbar";
 import { portableTextComponents } from "../../../components/portable-text";
 import { alternatesFor, siteHandle, siteUrl } from "../../../lib/site";
 import { formatDate } from "../../../lib/utils";
+import { JsonLd } from "../../../components/json-ld";
+import { articleSchema } from "../../../lib/structured-data";
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -67,6 +69,15 @@ export default async function ArticlePage({
 
   return (
     <div className="flex flex-col relative">
+      <JsonLd
+        data={articleSchema({
+          slug: article.slug,
+          title: article.title,
+          date: article.date,
+          updated: article.updated,
+          excerpt: toExcerpt(article.content) || article.title,
+        })}
+      />
       <Navbar />
 
       <main className="w-full flex justify-center">

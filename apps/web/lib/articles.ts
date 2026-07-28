@@ -13,6 +13,8 @@ export interface Article {
 
 export interface ArticleWithContent extends Article {
   content: PortableTextBlock[];
+  /** Sanity's own _updatedAt, so dateModified doesn't have to lie. */
+  updated?: string;
 }
 
 const EXCERPT_MAX_LENGTH = 160;
@@ -105,6 +107,7 @@ export async function getArticleBySlug(
     "slug": slug.current,
     title,
     "date": publishedAt,
+    "updated": _updatedAt,
     "content": body
   }`;
 
