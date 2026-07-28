@@ -9,6 +9,8 @@ import { SectionLabel } from "./section-label";
 import { SpotifyStatus } from "./spotify-status";
 import { StaggerChildren } from "./stagger-children";
 import { formatDate } from "../lib/utils";
+import { JsonLd } from "../components/json-ld";
+import { homeSchema } from "../lib/structured-data";
 
 /**
  * Streamed separately so the page shell doesn't wait on Spotify's API before
@@ -99,6 +101,7 @@ export default async function Home() {
 
   return (
     <div className="relative flex flex-col pb-10">
+      <JsonLd data={homeSchema} />
       <FadeIn y={-8}>
         <Navbar />
       </FadeIn>

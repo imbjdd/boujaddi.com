@@ -4,18 +4,27 @@ import { AnimatedList } from "../animated-list";
 import { Metadata } from "next";
 import { Navbar } from "../navbar";
 import { alternatesFor } from "../../lib/site";
+import { JsonLd } from "../../components/json-ld";
+import { aboutSchema } from "../../lib/structured-data";
 
 const description = "A bit about me.";
 
+// Distinct from the page's own heading, and from the title: Google shows this
+// under the /about entry, so restating "About Salim Boujaddi" there wasted the
+// one line it gets.
+const metaDescription =
+  "Salim Boujaddi — product engineer, generalist, chess and films. What I " +
+  "care about and what I'm trying to build.";
+
 export const metadata: Metadata = {
   title: "About",
-  description: "About Salim Boujaddi - Product Engineer",
+  description: metaDescription,
   alternates: alternatesFor("/about"),
   openGraph: {
     type: "profile",
     url: "/about",
     title: "About",
-    description: "About Salim Boujaddi - Product Engineer",
+    description: metaDescription,
   },
 };
 
@@ -24,6 +33,7 @@ export default async function About() {
 
   return (
     <div className="relative flex flex-col pb-10">
+      <JsonLd data={aboutSchema} />
       <Navbar />
 
       <main className="flex flex-col">
