@@ -62,6 +62,40 @@ export async function getArticles(): Promise<Article[]> {
   }
 }
 
+export interface FeedArticle extends Article {
+  excerpt: string;
+}
+
+/**
+ * The feed needs body text to build each item's <description>, which the list
+ * pages don't, so it gets its own query rather than making every caller of
+ * getArticles() pay for the full body. Capped so the feed can't grow forever.
+ */
+export async function getFeedArticles(limit = 20): Promise<FeedArticle[]> {
+  const query = `*[_type == "post" && defined(slug.current) && defined(publishedAt)] | order(publishedAt desc)[0...$limit] {
+    "slug": slug.current,
+    title,
+    "date": publishedAt,
+    "content": body
+  }`;
+
+  try {
+    const articles = await client.fetch<ArticleWithContent[]>(
+      query,
+      { limit },
+      { next: { revalidate: 60 } }
+    );
+
+    return articles.map(({ content, ...article }) => ({
+      ...article,
+      excerpt: toExcerpt(content),
+    }));
+  } catch (error) {
+    console.error("Error fetching feed articles:", error);
+    return [];
+  }
+}
+
 export async function getArticleBySlug(
   slug: string
 ): Promise<ArticleWithContent | null> {
