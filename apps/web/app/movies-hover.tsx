@@ -29,7 +29,7 @@ export function MoviesHover({ films }: { films: LetterboxdFilm[] }) {
       >
         movies
       </a>
-      {show && (
+      {show && films.length > 0 && (
         <span
           className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0 pb-2 flex gap-3 z-20 w-max"
           onMouseEnter={handleEnter}

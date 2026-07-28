@@ -11,10 +11,23 @@ export async function getRecentFilms(
   username: string,
   count = 3
 ): Promise<LetterboxdFilm[]> {
-  const res = await fetch(`https://letterboxd.com/${username}/rss/`, {
-    next: { revalidate: 3600 },
-  });
-  const xml = await res.text();
+  let xml: string;
+
+  try {
+    const res = await fetch(`https://letterboxd.com/${username}/rss/`, {
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) {
+      throw new Error(`Letterboxd responded ${res.status}`);
+    }
+    xml = await res.text();
+  } catch (error) {
+    // The films garnish a single line of the About page. An outage, a redesign,
+    // or just a slow response shouldn't take the whole route down with it.
+    console.error("Error fetching Letterboxd films:", error);
+    return [];
+  }
 
   const films: LetterboxdFilm[] = [];
   const items = xml.split("<item>").slice(1);
