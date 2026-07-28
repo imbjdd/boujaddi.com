@@ -3,9 +3,18 @@ import { Lifeline } from "@/components/lifeline";
 import { personalLifeline } from "@/lib/lifeline-personal";
 import { Navbar } from "../navbar";
 
+const description = "A timeline of my life and work.";
+
 export const metadata: Metadata = {
-  title: "Changelog - Salim Boujaddi",
-  description: "A timeline of my life and work.",
+  title: "Changelog",
+  description,
+  alternates: { canonical: "/changelog" },
+  openGraph: {
+    type: "website",
+    url: "/changelog",
+    title: "Changelog",
+    description,
+  },
 };
 
 export default function Changelog() {

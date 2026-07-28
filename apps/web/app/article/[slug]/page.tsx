@@ -1,10 +1,11 @@
-import { getArticleBySlug, getArticles } from "../../../lib/articles";
+import { getArticleBySlug, getArticles, toExcerpt } from "../../../lib/articles";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Navbar } from "../../navbar";
 import { portableTextComponents } from "../../../components/portable-text";
+import { siteUrl } from "../../../lib/site";
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -23,13 +24,29 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: "Article Not Found",
+      title: "Article not found",
     };
   }
 
+  const description = toExcerpt(article.content) || article.title;
+  const url = `${siteUrl}/article/${article.slug}`;
+
   return {
-    title: `${article.title} - Salim Boujaddi`,
-    description: article.title,
+    title: article.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: article.title,
+      description,
+      publishedTime: article.date,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+    },
   };
 }
 

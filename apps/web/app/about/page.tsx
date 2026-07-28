@@ -1,14 +1,21 @@
 import { getRecentFilms } from "../../lib/letterboxd";
 import { MoviesHover } from "../movies-hover";
-import { FadeIn } from "../fade-in";
 import { AnimatedList } from "../animated-list";
-import Link from "next/link";
 import { Metadata } from "next";
 import { Navbar } from "../navbar";
 
+const description = "A bit about me.";
+
 export const metadata: Metadata = {
-  title: "About - Salim Boujaddi",
+  title: "About",
   description: "About Salim Boujaddi - Product Engineer",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    type: "profile",
+    url: "/about",
+    title: "About",
+    description: "About Salim Boujaddi - Product Engineer",
+  },
 };
 
 export default async function About() {

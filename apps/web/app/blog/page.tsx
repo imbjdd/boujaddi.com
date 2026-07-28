@@ -1,12 +1,20 @@
 import Link from "next/link";
 import { getArticles } from "../../lib/articles";
 import { Metadata } from "next";
-import { PageHero } from "../../components/PageHero";
 import { Navbar } from "../navbar";
 
+const description = "Thoughts on building, learning, and shipping fast.";
+
 export const metadata: Metadata = {
-  title: "Blog - Salim Boujaddi",
-  description: "Thoughts on building, learning, and shipping fast.",
+  title: "Blog",
+  description,
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    type: "website",
+    url: "/blog",
+    title: "Blog",
+    description,
+  },
 };
 
 export default async function BlogPage() {
