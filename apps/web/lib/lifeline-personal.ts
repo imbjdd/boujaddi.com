@@ -95,8 +95,8 @@ export const personalLifeline = defineLifeline({
       ],
       photos: [
         {
-          src: "/lifeline/ecb-talk.jpg",
-          alt: "In a suit at the ECB",
+          src: "/lifeline/changelog-photo.jpg",
+          alt: "With the team at the European Central Bank",
           x: 0.45,
           y: -80,
           rotate: -3,
