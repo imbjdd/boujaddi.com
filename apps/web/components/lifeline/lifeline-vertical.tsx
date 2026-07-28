@@ -46,7 +46,7 @@ function RailTick() {
   return (
     <span
       aria-hidden="true"
-      className="block h-px w-[10px] bg-zinc-400 transition-colors duration-300 dark:bg-zinc-700"
+      className="block h-px w-[10px] bg-zinc-400"
     />
   )
 }
@@ -124,13 +124,13 @@ function LifelineVerticalEvent({ event }: { event: LifelineEvent }) {
             {" "}
             {image.video ? (
               <Film
-                className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400"
                 strokeWidth={1.75}
                 aria-hidden="true"
               />
             ) : (
               <ImageIcon
-                className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400"
                 strokeWidth={1.75}
                 aria-hidden="true"
               />
@@ -212,7 +212,7 @@ const LifelineVerticalEntry = forwardRef<
         }}
       >
         <div className={`${GRID_CLASS} items-center`}>
-          <p className="text-right text-[11px] font-medium leading-4 tabular-nums text-zinc-500 transition-colors duration-300 dark:text-zinc-600">
+          <p className="text-right text-[11px] font-medium leading-4 tabular-nums text-zinc-500">
             {age}
           </p>
 
@@ -220,7 +220,7 @@ const LifelineVerticalEntry = forwardRef<
             <RailTick />
           </div>
 
-          <p className="whitespace-nowrap text-[15px] font-medium leading-5 tabular-nums text-zinc-500 transition-colors duration-300 dark:text-zinc-400">
+          <p className="whitespace-nowrap text-[15px] font-medium leading-5 tabular-nums text-zinc-500">
             {marker.label ?? marker.year}
           </p>
         </div>
@@ -229,7 +229,7 @@ const LifelineVerticalEntry = forwardRef<
           <div className={`${GRID_CLASS} mt-6`}>
             <div aria-hidden="true" />
             <div aria-hidden="true" />
-            <div className="min-w-0 text-zinc-500 transition-colors duration-300 dark:text-zinc-400">
+            <div className="min-w-0 text-zinc-500">
               {marker.badges && marker.badges.length > 0 && (
                 <div className="mb-3 flex items-center justify-start gap-2">
                   {marker.badges.map((badge) => (
@@ -286,7 +286,7 @@ const LifelineVerticalEntry = forwardRef<
               )}
 
               {people.length > 0 && (
-                <div className="mt-6 border-t border-zinc-200/70 pt-5 transition-colors duration-300 dark:border-zinc-800/70">
+                <div className="mt-6 border-t border-zinc-200/70 pt-5">
                   <LifelinePeople people={people} allowWrap />
                 </div>
               )}
@@ -438,11 +438,11 @@ export function LifelineVertical({
       style={showIntro ? introStyle : undefined}
     >
       <div className={cn(`${GRID_CLASS} mb-6 items-end`, showIntro && "lifeline-labels-intro")}>
-        <p className="text-right text-[11px] font-medium uppercase leading-4 tracking-[0.08em] text-zinc-500 transition-colors duration-300 dark:text-zinc-600">
+        <p className="text-right text-[11px] font-medium uppercase leading-4 tracking-[0.08em] text-zinc-500">
           Age
         </p>
         <div aria-hidden="true" />
-        <p className="text-[11px] font-medium uppercase leading-5 tracking-[0.08em] text-zinc-500 transition-colors duration-300 dark:text-zinc-600">
+        <p className="text-[11px] font-medium uppercase leading-5 tracking-[0.08em] text-zinc-500">
           Years
         </p>
       </div>
@@ -455,7 +455,7 @@ export function LifelineVertical({
         >
           <div
             className={cn(
-              "h-full w-px border-l border-dashed border-zinc-300 transition-colors duration-300 dark:border-zinc-800",
+              "h-full w-px border-l border-dashed border-zinc-300",
               showIntro && "lifeline-rail-intro-vertical",
             )}
           />

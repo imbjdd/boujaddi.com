@@ -9,14 +9,11 @@ import {
   useState,
   type ReactNode,
 } from "react"
-import { useTheme } from "next-themes"
 import type { LifelineEventEffect } from "./types"
 
 /** Tweak these */
 const DURATION_S = 7.5
 const MAX_DPR = 1.5
-/** Wait for the theme cross-fade before the first burst. */
-const NIGHTFALL_MS = 400
 
 type Palette = [number[], number[], number[]]
 
@@ -246,46 +243,18 @@ export function LifelineFireworksProvider({
 }) {
   const [playing, setPlaying] = useState(false)
   const [effect, setEffect] = useState<LifelineEventEffect>("fireworks")
-  const { resolvedTheme, setTheme } = useTheme()
-  const restoreThemeRef = useRef<string | null>(null)
-  const nightfallRef = useRef(0)
   const playingRef = useRef(false)
   playingRef.current = playing
-
-  useEffect(() => {
-    return () => window.clearTimeout(nightfallRef.current)
-  }, [])
 
   const launch = useCallback((nextEffect: LifelineEventEffect) => {
     if (playingRef.current) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
     setEffect(nextEffect)
-
-    // Fireworks belong in the dark: switch a light page to dark for
-    // the show, and restore afterwards.
-    if (resolvedTheme === "light") {
-      restoreThemeRef.current = "light"
-      setTheme("dark")
-      window.clearTimeout(nightfallRef.current)
-      nightfallRef.current = window.setTimeout(
-        () => setPlaying(true),
-        NIGHTFALL_MS,
-      )
-      return
-    }
-
-    restoreThemeRef.current = null
     setPlaying(true)
-  }, [resolvedTheme, setTheme])
+  }, [])
 
-  const done = useCallback(() => {
-    setPlaying(false)
-    if (restoreThemeRef.current) {
-      setTheme(restoreThemeRef.current)
-      restoreThemeRef.current = null
-    }
-  }, [setTheme])
+  const done = useCallback(() => setPlaying(false), [])
 
   return (
     <LifelineFireworksContext.Provider value={{ launch }}>

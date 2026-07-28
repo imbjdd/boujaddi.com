@@ -277,7 +277,7 @@ export function LifelineLightbox({
       />
       <figure
         ref={figureRef}
-        className="absolute cursor-zoom-out overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10 dark:ring-white/15"
+        className="absolute cursor-zoom-out overflow-hidden rounded-xl shadow-2xl ring-1 ring-black/10"
         style={{
           left,
           top,

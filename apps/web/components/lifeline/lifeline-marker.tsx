@@ -60,20 +60,20 @@ export const LifelineMarkerColumn = forwardRef<
         }}
       >
         <span
-          className="absolute left-0 top-[var(--lifeline-rail)] z-10 h-[10px] w-px -translate-y-1/2 bg-zinc-400 transition-colors duration-300 group-hover:bg-zinc-600 dark:bg-zinc-700 dark:group-hover:bg-zinc-400"
+          className="absolute left-0 top-[var(--lifeline-rail)] z-10 h-[10px] w-px -translate-y-1/2 bg-zinc-400 transition-colors duration-300 group-hover:bg-zinc-600"
           aria-hidden="true"
         />
 
         <div className="flex w-full flex-col items-start text-left">
-          <p className="mb-5 h-4 text-[11px] font-medium leading-4 tabular-nums text-zinc-500 transition-colors duration-300 group-hover:text-black dark:text-zinc-600 dark:group-hover:text-zinc-400">
+          <p className="mb-5 h-4 text-[11px] font-medium leading-4 tabular-nums text-zinc-500 transition-colors duration-300 group-hover:text-black">
             {age}
           </p>
 
-          <p className="mb-6 h-5 whitespace-nowrap text-[15px] font-medium leading-5 tabular-nums text-zinc-500 transition-colors duration-300 group-hover:text-black dark:group-hover:text-white">
+          <p className="mb-6 h-5 whitespace-nowrap text-[15px] font-medium leading-5 tabular-nums text-zinc-500 transition-colors duration-300 group-hover:text-black">
             {marker.label ?? marker.year}
           </p>
 
-          <div className="relative w-full pb-10 text-zinc-500 transition-colors duration-300 group-hover:text-black dark:group-hover:text-zinc-300">
+          <div className="relative w-full pb-10 text-zinc-500 transition-colors duration-300 group-hover:text-black">
             {/* When this column carries people, the content block reserves
                 the band's height as a floor: short and average columns put
                 their portraits on the same line as every other column, and
@@ -149,13 +149,13 @@ export const LifelineMarkerColumn = forwardRef<
                           {" "}
                           {image.video ? (
                             <Film
-                              className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                              className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400"
                               strokeWidth={1.75}
                               aria-hidden="true"
                             />
                           ) : (
                             <ImageIcon
-                              className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400 transition-colors duration-300 dark:text-zinc-600"
+                              className="ml-0.5 inline-block h-3 w-3 -translate-y-px text-zinc-400"
                               strokeWidth={1.75}
                               aria-hidden="true"
                             />
