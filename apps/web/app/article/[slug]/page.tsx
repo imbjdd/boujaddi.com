@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Navbar } from "../../navbar";
+import { portableTextComponents } from "../../../components/portable-text";
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -58,8 +59,11 @@ export default async function ArticlePage({
               day: "numeric",
             })}
           </p>
-          <div className="prose max-w-none">
-            <PortableText value={article.content} />
+          <div className="prose prose-zinc max-w-none">
+            <PortableText
+              value={article.content}
+              components={portableTextComponents}
+            />
           </div>
         </div>
       </div>
