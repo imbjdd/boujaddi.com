@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -39,6 +39,15 @@ export const metadata: Metadata = {
     description: siteDescription,
     creator: "@salimboujaddi",
   },
+};
+
+/**
+ * Discord tints the accent bar of a link embed with theme-color, so this is
+ * what makes the card read as white rather than borderless. It also tints the
+ * browser chrome on mobile, which matches the page background anyway.
+ */
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
