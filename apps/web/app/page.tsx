@@ -8,6 +8,7 @@ import { Projects } from "./projects";
 import { SectionLabel } from "./section-label";
 import { SpotifyStatus } from "./spotify-status";
 import { StaggerChildren } from "./stagger-children";
+import { formatDate } from "../lib/utils";
 
 /**
  * Streamed separately so the page shell doesn't wait on Spotify's API before
@@ -34,11 +35,7 @@ function ItemList({ items }: { items: ListItem[] }) {
   return (
     <>
       {items.map((item) => {
-        const date = new Date(item.date).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
+        const date = formatDate(item.date);
         const content = (
           <div className="py-3 flex justify-between">
             <p className="pr-4">

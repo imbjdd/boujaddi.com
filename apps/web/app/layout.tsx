@@ -2,7 +2,14 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
-import { siteDescription, siteName, siteTitle, siteUrl } from "../lib/site";
+import {
+  alternatesFor,
+  siteDescription,
+  siteHandle,
+  siteName,
+  siteTitle,
+  siteUrl,
+} from "../lib/site";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,12 +27,7 @@ export const metadata: Metadata = {
     template: `%s - ${siteName}`,
   },
   description: siteDescription,
-  alternates: {
-    canonical: "/",
-    types: {
-      "application/rss+xml": `${siteUrl}/feed.xml`,
-    },
-  },
+  alternates: alternatesFor("/"),
   openGraph: {
     type: "website",
     siteName,
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    creator: "@salimboujaddi",
+    creator: siteHandle,
   },
 };
 

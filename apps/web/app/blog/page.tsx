@@ -2,13 +2,15 @@ import Link from "next/link";
 import { getArticles } from "../../lib/articles";
 import { Metadata } from "next";
 import { Navbar } from "../navbar";
+import { alternatesFor } from "../../lib/site";
+import { formatDate } from "../../lib/utils";
 
 const description = "Thoughts on building, learning, and shipping fast.";
 
 export const metadata: Metadata = {
   title: "Blog",
   description,
-  alternates: { canonical: "/blog" },
+  alternates: alternatesFor("/blog"),
   openGraph: {
     type: "website",
     url: "/blog",
@@ -46,11 +48,7 @@ export default async function BlogPage() {
                   <p className="">{article.title}</p>
                   <p className="text-black/60">
                     <time dateTime={article.date}>
-                      {new Date(article.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
+                      {formatDate(article.date)}
                     </time>
                   </p>
                 </Link>

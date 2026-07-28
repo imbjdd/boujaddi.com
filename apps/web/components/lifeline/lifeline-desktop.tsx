@@ -102,7 +102,7 @@ export function LifelineDesktop({
         // first frame instead of waiting on the JS axis lock; horizontal
         // panning stays ours.
         isEmbed &&
-          "touch-pan-y focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+          "touch-pan-y focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/40",
         // Hold it blank rather than showing a settled timeline that then
         // resets itself to play the intro. Below the fold there is nothing
         // to see anyway, and the arming margin means it fills in before it

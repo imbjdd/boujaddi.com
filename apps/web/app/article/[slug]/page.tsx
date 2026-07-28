@@ -4,7 +4,8 @@ import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
 import { Navbar } from "../../navbar";
 import { portableTextComponents } from "../../../components/portable-text";
-import { siteUrl } from "../../../lib/site";
+import { alternatesFor, siteHandle, siteUrl } from "../../../lib/site";
+import { formatDate } from "../../../lib/utils";
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -24,6 +25,8 @@ export async function generateMetadata({
   if (!article) {
     return {
       title: "Article not found",
+      alternates: { canonical: null },
+      robots: { index: false },
     };
   }
 
@@ -33,7 +36,7 @@ export async function generateMetadata({
   return {
     title: article.title,
     description,
-    alternates: { canonical: url },
+    alternates: alternatesFor(url),
     openGraph: {
       type: "article",
       url,
@@ -45,6 +48,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: article.title,
       description,
+      creator: siteHandle,
     },
   };
 }
@@ -69,13 +73,7 @@ export default async function ArticlePage({
         <article className="max-w-3xl px-4 md:px-8 py-12 w-full">
           <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
           <p className="text-black/60 mb-8">
-            <time dateTime={article.date}>
-              {new Date(article.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
+            <time dateTime={article.date}>{formatDate(article.date)}</time>
           </p>
           <div className="prose prose-zinc max-w-none">
             <PortableText

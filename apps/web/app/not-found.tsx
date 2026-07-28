@@ -4,6 +4,10 @@ import { Navbar } from "./navbar";
 
 export const metadata: Metadata = {
   title: "Page not found",
+  // Without the explicit null this inherits the layout's `canonical: "/"`, and
+  // every missing URL then tells crawlers it is really the homepage.
+  alternates: { canonical: null },
+  robots: { index: false },
 };
 
 export default function NotFound() {

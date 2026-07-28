@@ -2,13 +2,14 @@ import { Metadata } from "next";
 import { Lifeline } from "@/components/lifeline";
 import { personalLifeline } from "@/lib/lifeline-personal";
 import { Navbar } from "../navbar";
+import { alternatesFor } from "@/lib/site";
 
 const description = "A timeline of my life and work.";
 
 export const metadata: Metadata = {
   title: "Changelog",
   description,
-  alternates: { canonical: "/changelog" },
+  alternates: alternatesFor("/changelog"),
   openGraph: {
     type: "website",
     url: "/changelog",
