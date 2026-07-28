@@ -67,6 +67,19 @@ export default function RootLayout({
             strategy="beforeInteractive"
           />
         )}
+        {/*
+         * Umami is cookieless, so this needs no consent banner. `data-domains`
+         * is what keeps local and preview builds out of the numbers — it gates
+         * on window.location.hostname, so it holds even for a production build
+         * run on localhost, which an env check would not.
+         */}
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="270cf818-e1ea-4a13-a087-149fd7db7425"
+          data-performance="true"
+          data-domains="boujaddi.com"
+          strategy="afterInteractive"
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
