@@ -12,12 +12,8 @@ import {
 } from "../lib/site";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "./fonts/GeistVF.woff2",
   variable: "--font-geist-sans",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
@@ -81,7 +77,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={geistSans.variable}>
         {children}
       </body>
     </html>
