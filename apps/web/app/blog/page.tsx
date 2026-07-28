@@ -24,38 +24,45 @@ export default async function BlogPage() {
     <div className="flex flex-col pb-4 relative">
       <Navbar />
 
-      <div className="w-screen flex justify-center">
-        <div className="max-w-3xl w-full px-4 py-4">
-          <p className="text-black/50">Thoughts on building, learning, and shipping fast.</p>
-        </div>
-      </div>
+      <main className="flex flex-col">
+        {/* The page deliberately shows no title, but it still needs one. */}
+        <h1 className="sr-only">Blog</h1>
 
-      <div className="w-screen flex justify-center">
-        <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
-          {articles.length > 0 ? (
-            articles.map((article) => (
-              <Link
-                key={article.slug}
-                href={`/article/${article.slug}`}
-                className="py-2 transition-colors cursor-pointer"
-              >
-                <p className="">{article.title}</p>
-                <p className="text-black/50">
-                  {new Date(article.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              </Link>
-            ))
-          ) : (
-            <div className="px-4 py-8 text-center text-black/50">
-              No articles yet. Check back soon!
-            </div>
-          )}
+        <div className="w-full flex justify-center">
+          <div className="max-w-3xl w-full px-4 py-4">
+            <p className="text-black/60">{description}</p>
+          </div>
         </div>
-      </div>
+
+        <div className="w-full flex justify-center">
+          <div className="max-w-3xl h-fit w-full px-4 flex flex-col justify-between ">
+            {articles.length > 0 ? (
+              articles.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/article/${article.slug}`}
+                  className="py-2 transition-colors cursor-pointer"
+                >
+                  <p className="">{article.title}</p>
+                  <p className="text-black/60">
+                    <time dateTime={article.date}>
+                      {new Date(article.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </p>
+                </Link>
+              ))
+            ) : (
+              <div className="px-4 py-8 text-center text-black/60">
+                No articles yet. Check back soon!
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
     </div>
   );
 }

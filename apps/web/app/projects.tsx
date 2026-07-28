@@ -28,7 +28,7 @@ export function Projects() {
             <p className="font-semibold text-black/80">
               AI cost intelligence for every company
             </p>
-            <p className="text-sm text-black/50">firedog.finance</p>
+            <p className="text-sm text-black/60">firedog.finance</p>
           </div>
         </Link>
       </FadeIn>
@@ -61,7 +61,7 @@ export function Projects() {
             <p className="font-semibold text-black/80">
               A directory of hackathons from around the world
             </p>
-            <p className="text-sm text-black/50">hackathonatlas.com</p>
+            <p className="text-sm text-black/60">hackathonatlas.com</p>
           </div>
         </Link>
 
@@ -86,7 +86,7 @@ export function Projects() {
             <p className="font-semibold text-black/80">
               A breathing guide that paces your breath with light
             </p>
-            <p className="text-sm text-black/50">App Store · iOS</p>
+            <p className="text-sm text-black/60">App Store · iOS</p>
           </div>
         </Link>
       </StaggerChildren>

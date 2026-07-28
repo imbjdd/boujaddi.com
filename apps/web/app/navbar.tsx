@@ -14,7 +14,9 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="-sticky top-0 z-10 bg-white w-screen flex justify-center">
+    // Not sticky: on the home page the <FadeIn> wrapper is exactly nav-height,
+    // which would leave `sticky` no room to travel. Kept static on purpose.
+    <nav aria-label="Main" className="bg-white w-full flex justify-center">
       <div className="max-w-3xl py-4 h-fit gap-8 w-full px-4 flex">
         {links.map((link) => {
           const isActive =
@@ -22,17 +24,18 @@ export function Navbar() {
               ? pathname === "/"
               : pathname.startsWith(link.href);
 
-          return isActive ? (
-            <p key={link.href} className="font-bold">
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={isActive ? "page" : undefined}
+              className={isActive ? "font-bold" : "hover:text-black/70"}
+            >
               {link.label}
-            </p>
-          ) : (
-            <Link key={link.href} href={link.href}>
-              <p>{link.label}</p>
             </Link>
           );
         })}
       </div>
-    </div>
+    </nav>
   );
 }

@@ -51,11 +51,11 @@ function ItemList({ items }: { items: ListItem[] }) {
           <div className="py-3 flex justify-between">
             <p className="pr-4">
               {item.subtitle && (
-                <span className="text-black/50">{item.subtitle}, </span>
+                <span className="text-black/60">{item.subtitle}, </span>
               )}
               {item.title}
             </p>
-            <p className="shrink-0 text-black/50">{date}</p>
+            <p className="shrink-0 text-black/60">{date}</p>
           </div>
         );
         return item.href ? (
@@ -113,46 +113,47 @@ export default async function Home() {
       <FadeIn y={-8}>
         <Navbar />
       </FadeIn>
-      <div className="w-screen flex justify-center">
+      <main className="flex flex-col">
+      <div className="w-full flex justify-center">
         <div className="max-w-3xl h-8 gap-12 w-full px-4 flex "></div>
       </div>
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex items-end justify-between gap-8">
           <StaggerChildren
             className="flex grow flex-col gap-1"
             delay={0.14}
             staggerDelay={0.08}
           >
-            <p className="text-black/50 text-xs min-h-4">
+            <p className="text-black/60 text-xs min-h-4">
               <Suspense fallback={null}>
                 <SpotifyStatusSlot />
               </Suspense>
             </p>
-            <p className="font-bold text-2xl">Salim Boujaddi</p>
+            <h1 className="font-bold text-2xl">Salim Boujaddi</h1>
             <p className="text-black/70">Product Engineer</p>
           </StaggerChildren>
         </div>
       </div>
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <FadeIn delay={0.42} className="w-screen flex justify-center">
+      <FadeIn delay={0.42} className="w-full flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col gap-4 text-black/70">
-          <p>I'm a product engineer focused on building and shipping AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.</p>
-          <p>I've worked on AI projects as both a builder and consultant, and spoke at the <a href="https://www.ecb.europa.eu/" target="_blank" rel="noreferrer" className="underline hover:text-black">European Central Bank</a> about AI agents and their impact on institutions.</p>
+          <p>I&apos;m a product engineer focused on building and shipping AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.</p>
+          <p>I&apos;ve worked on AI projects as both a builder and consultant, and spoke at the <a href="https://www.ecb.europa.eu/" target="_blank" rel="noreferrer" className="underline hover:text-black">European Central Bank</a> about AI agents and their impact on institutions.</p>
           <p>Outside of that, I like experimenting, shipping small projects, and exploring new ideas around AI and product.</p>
         </div>
       </FadeIn>
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <Projects />
       </div>
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <FadeIn className="w-screen flex justify-center" whileInView>
+      <FadeIn className="w-full flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
           <SectionLabel>EXPERIENCE</SectionLabel>
           <div className="flex w-full items-start justify-between gap-4 py-3">
@@ -160,7 +161,7 @@ export default async function Home() {
               <span className="font-semibold text-black/80">Firedog</span>
               <span className="text-black/70">, Co-founder & CTO</span>
             </p>
-            <p className="shrink-0 text-sm text-black/50">
+            <p className="shrink-0 text-sm text-black/60">
               Jul 2026 - Present
             </p>
           </div>
@@ -169,7 +170,7 @@ export default async function Home() {
               <span className="font-semibold text-black/80">Stairling</span>
               <span className="text-black/70">, AI Engineer</span>
             </p>
-            <p className="shrink-0 text-sm text-black/50">
+            <p className="shrink-0 text-sm text-black/60">
               May 2026 - Jul 2026
             </p>
           </div>
@@ -180,7 +181,7 @@ export default async function Home() {
                 , Member of Technical Staff — RL environments
               </span>
             </p>
-            <p className="shrink-0 text-sm text-black/50">
+            <p className="shrink-0 text-sm text-black/60">
               Apr 2026 - Jun 2026
             </p>
           </div>
@@ -189,7 +190,7 @@ export default async function Home() {
               <span className="font-semibold text-black/80">Rippletide</span>
               <span className="text-black/70">, Product Engineer</span>
             </p>
-            <p className="shrink-0 text-sm text-black/50">
+            <p className="shrink-0 text-sm text-black/60">
               Oct 2025 - Apr 2026
             </p>
           </div>
@@ -198,7 +199,7 @@ export default async function Home() {
               <span className="font-semibold text-black/80">TrendTrack</span>
               <span className="text-black/70">, Product Engineer</span>
             </p>
-            <p className="shrink-0 text-sm text-black/50">
+            <p className="shrink-0 text-sm text-black/60">
               Jan 2026 - Mar 2026
             </p>
           </div>
@@ -207,40 +208,41 @@ export default async function Home() {
               <span className="font-semibold text-black/80">LinkPact</span>
               <span className="text-black/70">, AI Consultant</span>
             </p>
-            <p className="shrink-0 text-sm text-black/50">
+            <p className="shrink-0 text-sm text-black/60">
               Jun 2025 - Sep 2025
             </p>
           </div>
         </div>
       </FadeIn>
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
 
       {articleItems.length > 0 && (
         <>
-          <FadeIn className="w-screen flex justify-center" whileInView>
+          <FadeIn className="w-full flex justify-center" whileInView>
             <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
               <SectionLabel>ARTICLES</SectionLabel>
               <ItemList items={articleItems} />
             </div>
           </FadeIn>
-          <div className="w-screen flex justify-center">
+          <div className="w-full flex justify-center">
             <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
           </div>
         </>
       )}
-      <FadeIn className="w-screen flex justify-center" whileInView>
+      <FadeIn className="w-full flex justify-center" whileInView>
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col">
           <SectionLabel>TALKS</SectionLabel>
           <ItemList items={talkItems} />
         </div>
       </FadeIn>
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div className="max-w-3xl h-10 gap-12 w-full px-4 flex "></div>
       </div>
-      <FadeIn className="w-screen flex justify-center" whileInView>
-        <div className="max-w-3xl h-fit w-full px-4 pb-2 flex gap-6 text-sm text-black/70">
+      </main>
+      <FadeIn className="w-full flex justify-center" whileInView>
+        <footer className="max-w-3xl h-fit w-full px-4 pb-2 flex gap-6 text-sm text-black/70">
           <Link
             href="https://x.com/salimboujaddi"
             target="_blank"
@@ -265,7 +267,13 @@ export default async function Home() {
           >
             GitHub
           </Link>
-        </div>
+          <a
+            href="/feed.xml"
+            className="transition-colors hover:text-black"
+          >
+            RSS
+          </a>
+        </footer>
       </FadeIn>
     </div>
   );

@@ -22,13 +22,16 @@ export default function Changelog() {
     <div className="flex h-dvh flex-col">
       <Navbar />
 
-      <div className="min-h-0 flex-1 overflow-y-auto md:overflow-hidden">
+      {/* The page deliberately shows no title, but it still needs one. */}
+      <h1 className="sr-only">Changelog</h1>
+
+      <main className="min-h-0 flex-1 overflow-y-auto md:overflow-hidden">
         <Lifeline
           markers={personalLifeline.markers}
           birthYear={personalLifeline.birthYear}
           mode="embed"
         />
-      </div>
+      </main>
     </div>
   );
 }
