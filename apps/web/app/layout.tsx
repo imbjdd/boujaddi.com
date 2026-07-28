@@ -68,10 +68,17 @@ export default function RootLayout({
          * is what keeps local and preview builds out of the numbers — it gates
          * on window.location.hostname, so it holds even for a production build
          * run on localhost, which an env check would not.
+         *
+         * Both the script and the beacon are served from our own origin so ad
+         * blockers don't drop them. `data-host-url` is not optional here: the
+         * cloud tracker hardcodes gateway.umami.is as its default and does not
+         * infer the endpoint from where it was loaded, so without it the
+         * script would be first-party but its beacon still third-party.
          */}
         <Script
-          src="https://cloud.umami.is/script.js"
+          src="/px/s.js"
           data-website-id="270cf818-e1ea-4a13-a087-149fd7db7425"
+          data-host-url="/px"
           data-performance="true"
           data-domains="boujaddi.com"
           strategy="afterInteractive"
