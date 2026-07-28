@@ -3,13 +3,14 @@ import { MoviesHover } from "../movies-hover";
 import { AnimatedList } from "../animated-list";
 import { Metadata } from "next";
 import { Navbar } from "../navbar";
+import { alternatesFor } from "../../lib/site";
 
 const description = "A bit about me.";
 
 export const metadata: Metadata = {
   title: "About",
   description: "About Salim Boujaddi - Product Engineer",
-  alternates: { canonical: "/about" },
+  alternates: alternatesFor("/about"),
   openGraph: {
     type: "profile",
     url: "/about",
