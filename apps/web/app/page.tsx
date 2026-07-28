@@ -1,21 +1,13 @@
-import { Button } from "@repo/ui/button";
 import { Suspense } from "react";
 import { getArticles } from "../lib/articles";
 import { getNowPlaying, getRecentlyPlayed } from "../lib/spotify";
 import { FadeIn } from "./fade-in";
 import Link from "next/link";
-import { Metadata } from "next";
 import { Navbar } from "./navbar";
 import { Projects } from "./projects";
 import { SectionLabel } from "./section-label";
 import { SpotifyStatus } from "./spotify-status";
 import { StaggerChildren } from "./stagger-children";
-
-export const metadata: Metadata = {
-  title: "Salim Boujaddi - Product Engineer",
-  description:
-    "Product Engineer building fast. I love hackathons, speed, and shipping products.",
-};
 
 /**
  * Streamed separately so the page shell doesn't wait on Spotify's API before

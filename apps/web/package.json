@@ -11,9 +11,7 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
-    "@paper-design/shaders-react": "0.0.72",
     "@portabletext/react": "^6.0.2",
-    "@repo/ui": "*",
     "@sanity/client": "^7.14.1",
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^1.2.0",
@@ -21,16 +19,12 @@
     "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
     "geist": "^1.7.2",
-    "gray-matter": "^4.0.3",
     "lucide-react": "^1.27.0",
     "motion": "^12.34.2",
     "next": "16.1.0",
     "next-sanity": "^11.6.12",
-    "next-themes": "^0.4.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1",
     "sanity": "^4.22.0",
     "styled-components": "^6.3.9",
     "tailwind-merge": "^3.6.0"
