@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FadeIn } from "./fade-in";
+import { ProjectVideo } from "./project-video";
 import { StaggerChildren } from "./stagger-children";
 
 export function Projects() {
@@ -13,13 +14,10 @@ export function Projects() {
           className="flex flex-col gap-3"
         >
         <div className="relative w-full aspect-video rounded-lg overflow-hidden flex items-center justify-center bg-black">
-          <video
+          <ProjectVideo
             src="/result.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover"
+            poster="/result-poster.jpg"
+            label="Firedog product demo"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
           <p className="relative text-[30px] font-bold text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
@@ -49,13 +47,10 @@ export function Projects() {
           className="flex flex-col gap-3"
         >
           <div className="relative w-full aspect-video rounded-lg overflow-hidden flex items-center justify-center bg-black">
-            <video
+            <ProjectVideo
               src="/atlas.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 h-full w-full object-cover"
+              poster="/atlas-poster.jpg"
+              label="Hackathon Atlas product demo"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             <p className="relative text-[22px] font-bold text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
@@ -77,13 +72,10 @@ export function Projects() {
           className="flex flex-col gap-3"
         >
           <div className="relative w-full aspect-video rounded-lg overflow-hidden flex items-center justify-center bg-black">
-            <video
+            <ProjectVideo
               src="/breathe.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 h-full w-full object-cover"
+              poster="/breathe-poster.jpg"
+              label="breathe. app demo"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             <p className="relative text-[22px] font-bold text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
