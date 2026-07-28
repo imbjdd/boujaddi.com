@@ -42,7 +42,9 @@ export function toExcerpt(content: PortableTextBlock[] | undefined): string {
 }
 
 export async function getArticles(): Promise<Article[]> {
-  const query = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
+  // `publishedAt` has to be present as well as the slug: an undated post
+  // formats as "Invalid Date" in the sitemap and the RSS feed.
+  const query = `*[_type == "post" && defined(slug.current) && defined(publishedAt)] | order(publishedAt desc) {
     "slug": slug.current,
     title,
     "date": publishedAt
@@ -63,7 +65,9 @@ export async function getArticles(): Promise<Article[]> {
 export async function getArticleBySlug(
   slug: string
 ): Promise<ArticleWithContent | null> {
-  const query = `*[_type == "post" && slug.current == $slug][0] {
+  // Same `publishedAt` guard as the list query, so an undated post is
+  // consistently absent rather than reachable with an "Invalid Date" byline.
+  const query = `*[_type == "post" && slug.current == $slug && defined(publishedAt)][0] {
     "slug": slug.current,
     title,
     "date": publishedAt,
