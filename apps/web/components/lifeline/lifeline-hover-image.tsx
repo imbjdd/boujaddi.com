@@ -63,19 +63,22 @@ export function LifelineHoverImageProvider({
   })
 
   useEffect(() => {
-    state.current.hoverCapable = window.matchMedia(
+    // The ref holds one object for the component's whole life and is only ever
+    // mutated, so binding it here still reads the current frame id at cleanup.
+    const current = state.current
+    current.hoverCapable = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
     ).matches
 
     const onMouseMove = (event: MouseEvent) => {
-      state.current.targetX = event.clientX
-      state.current.targetY = event.clientY
+      current.targetX = event.clientX
+      current.targetY = event.clientY
     }
 
     window.addEventListener("mousemove", onMouseMove, { passive: true })
     return () => {
       window.removeEventListener("mousemove", onMouseMove)
-      cancelAnimationFrame(state.current.frame)
+      cancelAnimationFrame(current.frame)
     }
   }, [])
 
