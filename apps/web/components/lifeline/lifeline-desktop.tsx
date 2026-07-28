@@ -139,17 +139,13 @@ export function LifelineDesktop({
             track scrolls, marker text passes underneath and would otherwise
             read straight through "Age" and "Years".
 
-            `bg-white dark:bg-black` to match the framing the shell puts
-            around this — reframe the page on a different surface and this
-            wants overriding with it. The transition is not decoration
-            either: without it the shield snaps between the two while the
-            page behind it is still crossfading, which flashes a hard box
-            for the length of a theme switch. 300ms on the default curve is
-            what `LifelineShell` fades on, so the two move as one.
+            `bg-white` matches the framing the shell puts around this —
+            reframe the page on a different surface and this wants
+            overriding with it.
           */}
           <div
             ref={labelsRef}
-            className="lifeline-labels shrink-0 bg-white transition-colors duration-300 will-change-transform dark:bg-black"
+            className="lifeline-labels shrink-0 bg-white will-change-transform"
             style={{ width: LIFELINE_STICKY_SHIELD_WIDTH }}
           >
             <div className={cn(showIntro && "lifeline-labels-intro")}>
@@ -164,7 +160,7 @@ export function LifelineDesktop({
             >
               <div
                 className={cn(
-                  "h-px w-full border-t border-dashed border-zinc-300 transition-colors duration-300 dark:border-zinc-800",
+                  "h-px w-full border-t border-dashed border-zinc-300",
                   showIntro && "lifeline-rail-intro",
                 )}
               />

@@ -79,15 +79,15 @@ export function LifelinePeople({
               className="h-7 w-7 shrink-0 rounded-full object-cover"
             />
           ) : (
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black text-[10px] font-medium text-white transition-colors duration-300 dark:bg-white dark:text-black">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black text-[10px] font-medium text-white">
               {getInitials(person.name)}
             </span>
           )}
           <p
             className={
               allowWrap
-                ? "text-left text-[13px] leading-snug text-zinc-500 transition-colors duration-300"
-                : "whitespace-nowrap text-left text-[13px] text-zinc-500 transition-colors duration-300 group-hover:text-zinc-700 dark:group-hover:text-zinc-400"
+                ? "text-left text-[13px] leading-snug text-zinc-500"
+                : "whitespace-nowrap text-left text-[13px] text-zinc-500 transition-colors duration-300 group-hover:text-zinc-700"
             }
           >
             {person.name}

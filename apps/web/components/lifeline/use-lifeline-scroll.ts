@@ -961,6 +961,9 @@ export function useLifelineScroll(
     return () => {
       cancelAnimationFrame(frameId)
       stopMomentum()
+      // Reading the latest id is the point: the settle loop reassigns it every
+      // frame, so a copy taken when the effect ran would leak a live rAF.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       cancelAnimationFrame(settleId.current)
       settlingRef.current = false
       resizeObserver?.disconnect()

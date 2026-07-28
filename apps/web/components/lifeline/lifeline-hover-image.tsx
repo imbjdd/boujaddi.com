@@ -63,19 +63,22 @@ export function LifelineHoverImageProvider({
   })
 
   useEffect(() => {
-    state.current.hoverCapable = window.matchMedia(
+    // The ref holds one object for the component's whole life and is only ever
+    // mutated, so binding it here still reads the current frame id at cleanup.
+    const current = state.current
+    current.hoverCapable = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
     ).matches
 
     const onMouseMove = (event: MouseEvent) => {
-      state.current.targetX = event.clientX
-      state.current.targetY = event.clientY
+      current.targetX = event.clientX
+      current.targetY = event.clientY
     }
 
     window.addEventListener("mousemove", onMouseMove, { passive: true })
     return () => {
       window.removeEventListener("mousemove", onMouseMove)
-      cancelAnimationFrame(state.current.frame)
+      cancelAnimationFrame(current.frame)
     }
   }, [])
 
@@ -234,7 +237,7 @@ export function LifelineHoverImageProvider({
         <img
           ref={imageRef}
           alt=""
-          className="w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out dark:ring-white/15"
+          className="w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out"
           decoding="async"
         />
         <video
@@ -246,7 +249,7 @@ export function LifelineHoverImageProvider({
           // Landscape fills the same 280px card as images; portrait is
           // capped by height instead, matching the floating cards'
           // scale (180x320) so tall clips don't tower over the cursor.
-          className="max-h-[320px] w-auto max-w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out dark:ring-white/15"
+          className="max-h-[320px] w-auto max-w-[280px] scale-95 rounded-xl shadow-2xl ring-1 ring-black/10 transition-[transform,box-shadow] duration-200 ease-out"
           style={{ display: "none" }}
         />
       </div>

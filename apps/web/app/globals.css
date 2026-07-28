@@ -1,54 +1,5 @@
 @import "tailwindcss";
-
-@layer base {
-  .prose {
-    @apply text-gray-900;
-  }
-
-  .prose h1 {
-    @apply text-3xl font-bold mb-4 mt-8;
-  }
-
-  .prose h2 {
-    @apply text-2xl font-bold mb-3 mt-6;
-  }
-
-  .prose h3 {
-    @apply text-xl font-semibold mb-2 mt-4;
-  }
-
-  .prose p {
-    @apply mb-4 leading-relaxed;
-  }
-
-  .prose ul {
-    @apply list-disc pl-6 mb-4 space-y-2;
-  }
-
-  .prose ol {
-    @apply list-decimal pl-6 mb-4 space-y-2;
-  }
-
-  .prose li {
-    @apply leading-relaxed;
-  }
-
-  .prose strong {
-    @apply font-semibold;
-  }
-
-  .prose em {
-    @apply italic;
-  }
-
-  .prose code {
-    @apply bg-gray-100 px-1 py-0.5 rounded text-sm;
-  }
-
-  .prose a {
-    @apply text-blue-600 hover:underline;
-  }
-}
+@plugin "@tailwindcss/typography";
 
 @theme inline {
   @keyframes lifeline-rail-draw {
