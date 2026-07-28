@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import type { LetterboxdFilm } from "../lib/letterboxd";
 
@@ -43,9 +44,11 @@ export function MoviesHover({ films }: { films: LetterboxdFilm[] }) {
                 rel="noopener noreferrer"
               >
                 {film.posterUrl && (
-                  <img
+                  <Image
                     src={film.posterUrl}
                     alt={film.title}
+                    width={96}
+                    height={144}
                     className="w-24 h-36 rounded object-cover hover:scale-105 transition-transform"
                   />
                 )}
