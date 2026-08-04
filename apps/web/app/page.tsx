@@ -159,15 +159,6 @@ export default async function Home() {
           </div>
           <div className="flex w-full items-start justify-between gap-4 py-3">
             <p className="pr-4">
-              <span className="font-semibold text-black/80">Stairling</span>
-              <span className="text-black/70">, AI Engineer</span>
-            </p>
-            <p className="shrink-0 text-sm text-black/60">
-              May 2026 - Jul 2026
-            </p>
-          </div>
-          <div className="flex w-full items-start justify-between gap-4 py-3">
-            <p className="pr-4">
               <span className="font-semibold text-black/80">Stealth</span>
               <span className="text-black/70">
                 , Member of Technical Staff — RL environments
