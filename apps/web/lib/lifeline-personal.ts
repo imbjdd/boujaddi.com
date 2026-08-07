@@ -109,6 +109,7 @@ export const personalLifeline = defineLifeline({
       events: [
         "Joined TrendTrack as a product engineer.",
         "Joined a stealth startup, building RL environments.",
+        "Joined Stairling as an AI engineer.",
         [
           { type: "text", value: "Co-founded " },
           {
