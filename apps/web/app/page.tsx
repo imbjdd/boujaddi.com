@@ -131,9 +131,9 @@ export default async function Home() {
       </div>
       <FadeIn delay={0.42} className="w-full flex justify-center">
         <div className="max-w-3xl h-fit w-full px-4 flex flex-col gap-4 text-black/70">
-          <p>I&apos;m a product engineer focused on building and shipping AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.</p>
-          <p>I&apos;ve worked on AI projects as both a builder and consultant, and spoke at the <a href="https://www.ecb.europa.eu/" target="_blank" rel="noreferrer" className="underline hover:text-black">European Central Bank</a> about AI agents and their impact on institutions.</p>
-          <p>Outside of that, I like experimenting, shipping small projects, and exploring new ideas around AI and product.</p>
+          <p>I&apos;m a co-founder and CTO building AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.</p>
+          <p>I&apos;ve worked across AI startups, consulting, and research, and spoken at the <a href="https://www.ecb.europa.eu/" target="_blank" rel="noreferrer" className="underline hover:text-black">European Central Bank</a> about AI agents and their impact on institutions. I&apos;ve also won $10k+ in hackathon prizes, including multiple wins at ETHGlobal and Entrepreneur First.</p>
+          <p>I like experimenting, shipping small projects, and exploring new ideas around AI and product.</p>
         </div>
       </FadeIn>
       <div className="w-full flex justify-center">
