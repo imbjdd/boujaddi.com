@@ -8,7 +8,7 @@ export function Projects() {
     <div className="max-w-3xl h-fit w-full px-4 flex flex-col gap-6">
       <FadeIn whileInView>
         <Link
-          href="https://firedog.finance"
+          href="https://ergon.finance"
           target="_blank"
           rel="noreferrer"
           className="flex flex-col gap-3"
@@ -17,18 +17,18 @@ export function Projects() {
           <ProjectVideo
             src="/result.mp4"
             poster="/result-poster.jpg"
-            label="Firedog product demo"
+            label="Ergon product demo"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
           <p className="relative text-[30px] font-bold text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-            Firedog
+            Ergon
           </p>
         </div>
           <div>
             <p className="font-semibold text-black/80">
               AI cost intelligence for every company
             </p>
-            <p className="text-sm text-black/60">firedog.finance</p>
+            <p className="text-sm text-black/60">ergon.finance</p>
           </div>
         </Link>
       </FadeIn>

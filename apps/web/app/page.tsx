@@ -150,7 +150,7 @@ export default async function Home() {
           <SectionLabel>EXPERIENCE</SectionLabel>
           <div className="flex w-full items-start justify-between gap-4 py-3">
             <p className="pr-4">
-              <span className="font-semibold text-black/80">Firedog</span>
+              <span className="font-semibold text-black/80">Ergon</span>
               <span className="text-black/70">, Co-founder & CTO</span>
             </p>
             <p className="shrink-0 text-sm text-black/60">
