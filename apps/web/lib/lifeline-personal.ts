@@ -114,8 +114,8 @@ export const personalLifeline = defineLifeline({
           { type: "text", value: "Co-founded " },
           {
             type: "link",
-            value: "Firedog",
-            href: "https://firedog.finance",
+            value: "Ergon",
+            href: "https://ergon.finance",
           },
           {
             type: "text",
