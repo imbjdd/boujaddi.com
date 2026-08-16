@@ -102,7 +102,9 @@ export default async function Home() {
   return (
     <div className="relative flex flex-col pb-10">
       <JsonLd data={homeSchema} />
-      <FadeIn y={-8}>
+      {/* The sticky lives here, not on the nav: this wrapper is exactly
+          nav-height, so a sticky nav inside it would have nowhere to travel. */}
+      <FadeIn y={-8} className="sticky top-0 z-40">
         <Navbar />
       </FadeIn>
       <main className="flex flex-col">
