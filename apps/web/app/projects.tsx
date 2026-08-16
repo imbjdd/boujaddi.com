@@ -3,9 +3,15 @@ import { FadeIn } from "./fade-in";
 import { ProjectVideo } from "./project-video";
 import { StaggerChildren } from "./stagger-children";
 
+/*
+ * The container is deliberately wider than the 3xl the prose keeps: the videos
+ * are the only colour on the page, so they are what should claim the margins on
+ * a big screen. The ramp starts at xl — breaking out any earlier would push them
+ * edge-to-edge on a laptop instead of giving them room.
+ */
 export function Projects() {
   return (
-    <div className="max-w-3xl h-fit w-full px-4 flex flex-col gap-6">
+    <div className="max-w-3xl xl:max-w-5xl 2xl:max-w-6xl h-fit w-full px-4 flex flex-col gap-6">
       <FadeIn whileInView>
         <Link
           href="https://ergon.finance"
