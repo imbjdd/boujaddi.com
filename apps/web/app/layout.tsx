@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
-import { FigmaCursor } from "./figma-cursor";
 import {
   alternatesFor,
   siteDescription,
@@ -86,7 +85,6 @@ export default function RootLayout({
         />
       </head>
       <body className={geistSans.variable}>
-        <FigmaCursor />
         {children}
       </body>
     </html>
