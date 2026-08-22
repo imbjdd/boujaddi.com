@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { bookingUrl } from "../lib/profile";
+
 const links = [
   { href: "/", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/changelog", label: "Changelog" },
 ];
-
-const BOOKING_URL = "https://cal.eu/salim-boujaddi/15min";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -68,14 +68,14 @@ export function Navbar() {
             on this site is plain type, so a solid block was the one thing that
             read as pasted on. The underline is the same treatment the bio uses
             for outbound links, which is what makes it belong here. */}
-        <Link
-          href={BOOKING_URL}
+        <a
+          href={bookingUrl}
           target="_blank"
           rel="noreferrer"
           className="ml-auto whitespace-nowrap underline decoration-1 underline-offset-4 transition-colors hover:text-black/70"
         >
           Book a call
-        </Link>
+        </a>
       </div>
     </nav>
   );

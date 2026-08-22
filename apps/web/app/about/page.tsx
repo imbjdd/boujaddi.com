@@ -6,8 +6,10 @@ import { Navbar } from "../navbar";
 import { alternatesFor } from "../../lib/site";
 import { JsonLd } from "../../components/json-ld";
 import { aboutSchema } from "../../lib/structured-data";
+import { aboutIntro } from "../../lib/profile";
 
-const description = "A bit about me.";
+// Shared with the markdown variant of this page, which lists the same bullets.
+const description = aboutIntro;
 
 // Distinct from the page's own heading, and from the title: Google shows this
 // under the /about entry, so restating "About Salim Boujaddi" there wasted the
