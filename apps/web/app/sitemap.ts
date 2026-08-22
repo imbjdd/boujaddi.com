@@ -6,7 +6,14 @@ import { siteUrl } from "../lib/site";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getArticles();
 
-  const staticRoutes = ["", "/about", "/blog", "/changelog"].map((path) => ({
+  const staticRoutes = [
+    "",
+    "/about",
+    "/blog",
+    "/changelog",
+    "/contact",
+    "/privacy",
+  ].map((path) => ({
     url: `${siteUrl}${path}`,
     changeFrequency: "monthly" as const,
     priority: path === "" ? 1 : 0.7,
