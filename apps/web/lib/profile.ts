@@ -53,7 +53,7 @@ export const bio: BioRun[][] = [
 
 export const experience: Experience[] = [
   { company: "Ergon", role: "Co-founder & CTO", period: "Jul 2026 - Present" },
-  { company: "Stairling", role: "AI Engineer", period: "May 2026 - Jul 2026" },
+  { company: "Stairling", role: "AI Engineer", period: "Jun 2026 - Aug 2026" },
   {
     company: "Stealth",
     role: "Member of Technical Staff — RL environments",
