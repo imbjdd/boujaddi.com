@@ -115,7 +115,7 @@ export const personalLifeline = defineLifeline({
           {
             type: "link",
             value: "Ergon",
-            href: "https://ergon.finance",
+            href: "https://ergon.to",
           },
           {
             type: "text",

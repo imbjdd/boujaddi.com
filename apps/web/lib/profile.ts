@@ -89,8 +89,8 @@ export const projects: Project[] = [
   {
     name: "Ergon",
     tagline: "AI cost intelligence for every company",
-    meta: "ergon.finance",
-    href: "https://ergon.finance",
+    meta: "ergon.to",
+    href: "https://ergon.to",
     video: "/result.mp4",
     poster: "/result-poster.jpg",
   },
