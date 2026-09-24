@@ -1,5 +1,15 @@
+import path from "node:path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  /*
+   * Stray lockfiles higher up (~/package-lock.json) make Next infer the
+   * wrong workspace root, which breaks module resolution in dev — pin it
+   * to the monorepo root.
+   */
+  turbopack: {
+    root: path.join(import.meta.dirname, "../.."),
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "cdn.sanity.io" },
