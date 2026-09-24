@@ -17,7 +17,6 @@ import {
   experience,
   role,
   talks,
-  whenNotToUse,
   whenToUse,
 } from "../lib/profile";
 
@@ -167,7 +166,6 @@ export default async function Home() {
               <p className="text-black/70">{entry.body}</p>
             </div>
           ))}
-          <p className="pt-1 text-black/60">{whenNotToUse}</p>
         </FadeIn>
 
         <div className="flex flex-col gap-3">

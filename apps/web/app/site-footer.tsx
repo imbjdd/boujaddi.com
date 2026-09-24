@@ -56,12 +56,6 @@ export function SiteFooter() {
             </a>
           ))}
         </nav>
-
-        <p className="text-black/60">
-          Every page here is also available as markdown — request it with an{" "}
-          <code>Accept: text/markdown</code> header, or read the whole site at
-          once in llms.txt. No cookies and no cross-site tracking.
-        </p>
       </footer>
     </FadeIn>
   );

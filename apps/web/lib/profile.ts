@@ -39,7 +39,7 @@ export type BioRun = string | { text: string; href: string };
 
 export const bio: BioRun[][] = [
   [
-    "I'm a co-founder and CTO building AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.",
+    "I'm a product engineer building AI products from 0 to 1. I enjoy working across engineering and product, turning ideas into simple tools that people actually use.",
   ],
   [
     "I've worked across AI startups, consulting, and research, and spoken at the ",
@@ -52,7 +52,7 @@ export const bio: BioRun[][] = [
 ];
 
 export const experience: Experience[] = [
-  { company: "Ergon", role: "Co-founder & CTO", period: "Jul 2026 - Present" },
+  { company: "Ergon", role: "Co-founder & CTO", period: "Jul 2026 - Sep 2026" },
   { company: "Stairling", role: "AI Engineer", period: "Jun 2026 - Aug 2026" },
   {
     company: "Stealth",
@@ -141,7 +141,7 @@ export const bookingUrl = "https://cal.eu/salim-boujaddi/15min";
 export const whenToUse = [
   {
     title: "Taking an AI product from zero to one",
-    body: "Scoping, prototyping, and shipping something people actually use rather than a demo. This is what I do full-time at Ergon.",
+    body: "Scoping, prototyping, and shipping something people actually use rather than a demo.",
   },
   {
     title: "Product engineering across the whole stack",
@@ -152,18 +152,10 @@ export const whenToUse = [
     body: "What changes when agents meet regulated, slow-moving organisations. I spoke on exactly this at the European Central Bank.",
   },
   {
-    title: "RL environments and evaluation",
-    body: "Building the environments models get trained and measured in — my work as Member of Technical Staff at a stealth lab.",
-  },
-  {
     title: "A credible first version, fast",
     body: "$10k+ in hackathon prizes, including multiple wins at ETHGlobal and Entrepreneur First, is mostly a record of shipping under a deadline.",
   },
 ];
-
-/** The caveat that belongs next to the list above, so agents pitch the right thing. */
-export const whenNotToUse =
-  "I am co-founder and CTO of Ergon full-time, so treat inbound as collaboration, advice, or partnership rather than availability for contract work.";
 
 export const contactIntro =
   "The fastest way to reach me is to book a slot — 15 minutes, no agenda needed. Otherwise my DMs are open on any of these.";

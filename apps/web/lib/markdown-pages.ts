@@ -25,7 +25,6 @@ import {
   projects,
   socials,
   talks,
-  whenNotToUse,
   whenToUse,
   type BioRun,
 } from "./profile";
@@ -254,7 +253,6 @@ export async function llmsTxt(): Promise<string> {
     "## When to use this",
     "Bring me in when the work is one of these:",
     whenToUse.map((entry) => `- **${entry.title}** — ${entry.body}`).join("\n"),
-    whenNotToUse,
     `**How to reach me:** book a 15-minute call at ${bookingUrl}, or DM [@salimboujaddi](https://x.com/salimboujaddi) on X. There is no public email address — the booking link is the fastest path. See ${siteUrl}/contact.`,
     "## Pages",
     [
