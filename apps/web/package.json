@@ -8,9 +8,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --max-warnings 0",
-    "check-types": "next typegen && tsc --noEmit"
+    "check-types": "next typegen && tsc --noEmit",
+    "preview": "bun run build:cf && opennextjs-cloudflare preview",
+    "deploy": "bun run build:cf && opennextjs-cloudflare deploy",
+    "build:cf": "opennextjs-cloudflare build && bun run build:studio",
+    "build:studio": "sanity build .open-next/assets/studio -y && perl -pi -e 's#\"/static/#\"/studio/static/#g' .open-next/assets/studio/index.html"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "1.20.10",
     "@portabletext/react": "^6.0.2",
     "@sanity/client": "^7.14.1",
     "@sanity/icons": "^3.7.4",
@@ -20,7 +25,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^1.27.0",
     "motion": "^12.34.2",
-    "next": "16.1.0",
+    "next": "16.3.8",
     "next-sanity": "^11.6.12",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -41,6 +46,7 @@
     "postcss": "^8.5.6",
     "react-grab": "^0.1.25",
     "tailwindcss": "^4.1.18",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "wrangler": "^4.150.0"
   }
 }
