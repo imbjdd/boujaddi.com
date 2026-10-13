@@ -5,7 +5,9 @@
     "declarationMap": false,
     "noUncheckedIndexedAccess": false,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "plugins": [
       {
@@ -21,6 +23,9 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".open-next",
+    ".wrangler",
+    "worker.ts"
   ]
 }

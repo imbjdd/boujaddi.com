@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "boujaddi-com",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  "services": [
+    // Self-reference used by OpenNext to revalidate ISR entries.
+    { "binding": "WORKER_SELF_REFERENCE", "service": "boujaddi-com" },
+  ],
+  "kv_namespaces": [
+    { "binding": "NEXT_INC_CACHE_KV", "id": "a498a86c2504463d89cf949250a03ede" },
+  ],
+  "images": { "binding": "IMAGES" },
+  /*
+   * A zone route rather than a custom domain: the apex keeps its proxied DNS
+   * record, and the Worker answers every request before it reaches the origin.
+   */
+  "routes": [{ "pattern": "boujaddi.com/*", "zone_name": "boujaddi.com" }],
+  "workers_dev": true,
+  "preview_urls": true,
+  "vars": {
+    "NEXT_PUBLIC_SANITY_PROJECT_ID": "gwtf40dp",
+    "NEXT_PUBLIC_SANITY_DATASET": "production",
+  },
+  "observability": { "enabled": true },
+}

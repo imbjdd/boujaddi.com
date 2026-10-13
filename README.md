@@ -29,6 +29,25 @@ bun run check-types
 `build` and `check-types` both write to `apps/web/.next/types`, so run them one at a
 time rather than in the same `turbo run` invocation.
 
+## Deploying
+
+The site runs on Cloudflare Workers via [OpenNext](https://opennext.js.org/cloudflare)
+(worker `boujaddi-com`, zone route `boujaddi.com/*`):
+
+```bash
+cd apps/web
+bun run deploy       # opennextjs-cloudflare build + sanity build, then wrangler deploy
+bun run preview      # same build, served locally by workerd
+```
+
+- The Sanity Studio is not a Next route: `sanity build` writes it as a static SPA
+  into the Worker's assets under `/studio`, and `worker.ts` falls back to its
+  `index.html` for client-side Studio routes. Bundled into the server it pushed
+  cold starts past the Workers CPU limit.
+- The ISR/data cache lives in the `boujaddi-com-next-cache` KV namespace.
+- Spotify credentials are Worker secrets (`wrangler secret put …`); the
+  `NEXT_PUBLIC_*` values are in `wrangler.jsonc` and `.env` (inlined at build).
+
 ## Environment
 
 `apps/web/.env`:

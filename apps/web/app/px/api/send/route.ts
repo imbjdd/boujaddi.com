@@ -9,7 +9,7 @@ const UMAMI_ENDPOINT = "https://gateway.umami.is/api/send";
  * `cf-connecting-ip` long before `x-forwarded-for`. That header is minted by
  * *its* edge from whoever opened the connection — which, once we proxy, is this
  * server. So forwarding headers is not enough: every visitor would geolocate to
- * the Railway region, and because Umami derives the session id from
+ * the Worker's location, and because Umami derives the session id from
  * uuid(sourceId, ip, userAgent, salt), a constant IP would also collapse
  * everyone sharing a user-agent into a single session.
  *
