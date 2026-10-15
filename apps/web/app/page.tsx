@@ -17,7 +17,6 @@ import {
   experience,
   role,
   talks,
-  whenToUse,
 } from "../lib/profile";
 
 /**
@@ -116,27 +115,30 @@ export default async function Home() {
       {/* The gap replaces the run of empty spacer divs this page used to carry
           between every section — they cost markup in the HTML and again in the
           RSC payload, for nothing a parent gap doesn't do. */}
-      <main className="flex flex-col gap-10 pt-8 pb-10">
+      <main className="flex flex-col gap-10 pt-16 pb-10">
         <StaggerChildren
-          className={`${COLUMN} flex flex-col gap-1`}
+          className={`${COLUMN} flex flex-col`}
           delay={0.14}
           staggerDelay={0.08}
         >
-          <p className="text-black/60 text-xs min-h-4">
+          <p className="mb-3 min-h-4 text-xs text-black/50">
             <Suspense fallback={null}>
               <SpotifyStatusSlot />
             </Suspense>
           </p>
-          <h1 className="font-bold text-2xl">Salim Boujaddi</h1>
-          <p className="text-black/70">{role}</p>
+          <h1 className="text-4xl font-semibold tracking-tight">
+            Salim Boujaddi
+          </h1>
+          <p className="mt-1 text-lg text-black/50">{role}</p>
+          <p className="text-black/40">Based in Paris</p>
         </StaggerChildren>
 
         <FadeIn
           delay={0.42}
-          className={`${COLUMN} flex flex-col gap-4 text-black/70`}
+          className={`${COLUMN} -mt-2 flex flex-col gap-5 text-[17px] leading-relaxed text-black/70`}
         >
           {bio.map((paragraph, index) => (
-            <p key={index}>
+            <p key={index} className="max-w-[66ch]">
               {paragraph.map((run, runIndex) =>
                 typeof run === "string" ? (
                   run
@@ -146,25 +148,13 @@ export default async function Home() {
                     href={run.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="underline hover:text-black"
+                    className="text-black/85 underline decoration-black/25 underline-offset-4 transition-colors hover:decoration-black"
                   >
                     {run.text}
                   </a>
                 ),
               )}
             </p>
-          ))}
-        </FadeIn>
-
-        {/* The same guidance llms.txt gives agents, on the page for people.
-            It lives in lib/profile so the two can't drift apart. */}
-        <FadeIn className={`${COLUMN} flex flex-col`} whileInView>
-          <SectionLabel>WHAT I CAN HELP WITH</SectionLabel>
-          {whenToUse.map((entry) => (
-            <div key={entry.title} className="py-3">
-              <h3 className="font-semibold text-black/80">{entry.title}</h3>
-              <p className="text-black/70">{entry.body}</p>
-            </div>
           ))}
         </FadeIn>
 
