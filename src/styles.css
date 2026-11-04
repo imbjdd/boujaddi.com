@@ -955,3 +955,25 @@ em {
     scale: 1;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .print,
+  .button,
+  .nav a::after,
+  .socials a::after {
+    transition: none;
+  }
+
+  .print--entrance,
+  .print img,
+  .print video,
+  .mark::before,
+  .print[data-landed],
+  .about__doodle[data-landed] {
+    animation: none !important;
+  }
+}
