@@ -7,19 +7,11 @@
  */
 
 export type Cue =
-  | 'tap'
-  | 'hover'
-  | 'jump'
-  | 'forward'
-  | 'backward'
-  | 'lift'
-  | 'drop'
-  | 'on'
-  | 'off'
+  'tap' | 'jump' | 'forward' | 'backward' | 'lift' | 'drop' | 'on' | 'off'
 
 const STORAGE_KEY = 'sound'
 const VOLUME = 0.2
-/** Quicker repeats of the same cue are dropped, so sweeping across links stays quiet. */
+/** Quicker repeats of the same cue are dropped, so double clicks stay quiet. */
 const REPEAT_MS = 60
 
 let context: AudioContext | undefined
@@ -87,9 +79,11 @@ function tone(
   delay: number,
   length: number,
   level: number,
+  type: OscillatorType = 'sine',
 ) {
   const start = context!.currentTime + delay
   const oscillator = context!.createOscillator()
+  oscillator.type = type
   oscillator.frequency.setValueAtTime(from, start)
   oscillator.frequency.exponentialRampToValueAtTime(to, start + length)
   const gain = envelope(start, length, level)
@@ -129,8 +123,6 @@ const cues: Record<Cue, () => void> = {
     tone(1100, 720, 0, 0.05, 0.5)
     hiss('bandpass', 3200, 2600, 0, 0.02, 0.2)
   },
-  // The faintest tick, alongside the squiggle drawn under hovered links.
-  hover: () => tone(2000, 1800, 0, 0.025, 0.12),
   // Moving to another section of the same page.
   jump: () => tone(700, 1050, 0, 0.09, 0.3),
   // A page turning to a new page, or back.
@@ -176,12 +168,45 @@ function cueFor(element: Element): Cue | undefined {
   if (!(element instanceof HTMLAnchorElement)) return 'tap'
   const url = new URL(element.href)
   if (url.origin !== location.origin) return 'tap'
-  if (url.pathname === location.pathname && url.hash) return 'jump'
+  const samePage =
+    url.pathname === location.pathname && url.search === location.search
+  if (samePage && url.hash) return 'jump'
   return 'forward'
 }
 
 const clickable = 'a[href], button, [data-sound]'
-const hoverable = '.button, .nav a, .socials a'
+
+/**
+ * Everything that reacts to the mouse ticks when the pointer reaches it. The
+ * first matching row sets the pitch: the bigger the thing, the lower the tick.
+ * Photos also rustle a little, like paper.
+ */
+const hoverKinds: [selector: string, pitch: number, paper?: true][] = [
+  ['.print, .project-caption__name', 880, true],
+  ['.button, button', 1320],
+  ['.job, .entries li, .note', 1480],
+  ['.nav a, .socials a', 1760],
+  ['a[href]', 2090],
+]
+const hoverable = hoverKinds.map(([selector]) => selector).join(', ')
+/** Hover ticks are at least this far apart, whatever the pointer crosses. */
+const HOVER_GAP_MS = 120
+/**
+ * Pointer speed, in px/ms, above which the mouse is sweeping: crossings wait
+ * for it to slow down on an element. Landing on a target is well below this.
+ */
+const SWEEP_SPEED = 1.5
+
+function hover(element: Element) {
+  if (!context || muted || reducedMotion?.matches) return
+  const [, pitch, paper] = hoverKinds.find(([selector]) =>
+    element.matches(selector),
+  )!
+  // A slight random detune keeps repeated ticks from sounding mechanical.
+  const from = pitch * (0.98 + Math.random() * 0.04)
+  tone(from, from * 0.92, 0, 0.04, 0.32, 'triangle')
+  if (paper) hiss('highpass', 3000, 4200, 0, 0.05, 0.12)
+}
 
 /** Listens for interactions across the whole document. Returns the cleanup. */
 export function installSound() {
@@ -202,14 +227,53 @@ export function installSound() {
 
   // Hover follows the mouse itself: pointerover also fires when the page
   // scrolls under a still cursor, which would tick through every link.
-  let hovered: Element | null = null
+  let hovered: Element[] = []
+  // The element entered while the mouse was still sweeping, waiting to tick
+  // once the pointer slows down on it.
+  let pending: Element | undefined
+  let lastTarget: EventTarget | null = null
+  let last = { x: 0, y: 0, time: 0 }
+  let speed = 0
+  let lastHover = -Infinity
   function onPointerMove(event: PointerEvent) {
+    // Touch and pen have no hover to speak of.
     if (event.pointerType !== 'mouse') return
-    const target =
-      event.target instanceof Element ? event.target.closest(hoverable) : null
-    if (target === hovered) return
-    hovered = target
-    if (target && context?.state === 'running') play('hover')
+    const elapsed = event.timeStamp - last.time
+    const step =
+      Math.hypot(event.clientX - last.x, event.clientY - last.y) /
+      Math.max(elapsed, 1)
+    speed = elapsed > 100 ? 0 : (speed + step) / 2
+    last = { x: event.clientX, y: event.clientY, time: event.timeStamp }
+
+    if (event.target !== lastTarget) {
+      lastTarget = event.target
+      // Hoverable elements nest (a link on a card); only the newly entered
+      // one ticks, so coming back from the link to its card stays quiet.
+      const chain: Element[] = []
+      let element =
+        event.target instanceof Element ? event.target.closest(hoverable) : null
+      while (element) {
+        chain.push(element)
+        element = element.parentElement?.closest(hoverable) ?? null
+      }
+      pending =
+        chain.find((candidate) => !hovered.includes(candidate)) ??
+        (pending && chain.includes(pending) ? pending : undefined)
+      hovered = chain
+    }
+
+    if (!pending) return
+    // Dragging a photo across the page, or audio still locked: drop it.
+    if (event.buttons || context?.state !== 'running') {
+      pending = undefined
+      return
+    }
+    // Sweeping across links stays quiet until the mouse settles on one.
+    if (speed > SWEEP_SPEED) return
+    if (event.timeStamp - lastHover < HOVER_GAP_MS) return
+    lastHover = event.timeStamp
+    hover(pending)
+    pending = undefined
   }
 
   const options = { capture: true, passive: true }
