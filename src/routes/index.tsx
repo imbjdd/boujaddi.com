@@ -20,6 +20,7 @@ function Home() {
         <Experience />
         <TalksAndArticles />
       </main>
+      <SayHi />
     </div>
   )
 }
@@ -286,5 +287,57 @@ function TalksAndArticles() {
         </div>
       </div>
     </section>
+  )
+}
+
+function SayHi() {
+  const highlight = useLanding<HTMLElement>()
+
+  return (
+    <footer className="band" id="say-hi">
+      <div className="frame say-hi">
+        <h2 className="display say-hi__title">
+          say{' '}
+          <em ref={highlight} className="mark mark--hi">
+            hi.
+          </em>
+        </h2>
+
+        <div className="say-hi__actions">
+          <a className="button button--large" href={links.x}>
+            follow me on x <span aria-hidden="true">→</span>
+          </a>
+          <ul className="socials">
+            <li>
+              <a href={links.x}>x</a>
+            </li>
+            <li>
+              <a href={links.linkedin}>linkedin</a>
+            </li>
+            <li>
+              <a href={links.github}>github</a>
+            </li>
+            <li>
+              <a href={links.rss}>rss</a>
+            </li>
+          </ul>
+        </div>
+
+        <Print
+          tape
+          src="/photos/call.webp"
+          alt="Laptop screen showing Salim alone on a video call, smiling slightly"
+          x={900}
+          y={90}
+          w={320}
+          ratio={416 / 440}
+          tilt={3}
+        >
+          <figcaption className="caption">me, waiting for your dm</figcaption>
+        </Print>
+
+        <p className="hand say-hi__signature">salim boujaddi, 2026</p>
+      </div>
+    </footer>
   )
 }

@@ -531,3 +531,45 @@ em {
   font-size: calc(22 * var(--u));
   line-height: calc(28 * var(--u));
 }
+
+/* Say hi: the one oversized moment on the page. */
+
+.say-hi {
+  height: calc(640 * var(--u));
+}
+
+.say-hi__title {
+  position: absolute;
+  top: calc(90 * var(--u));
+  left: calc(112 * var(--u));
+  font-size: calc(180 * var(--u));
+  line-height: calc(180 * var(--u));
+  letter-spacing: -0.03em;
+}
+
+.say-hi__actions {
+  position: absolute;
+  top: calc(320 * var(--u));
+  left: calc(122 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(20 * var(--u));
+}
+
+.socials {
+  display: flex;
+  gap: calc(28 * var(--u));
+  color: var(--cobalt);
+  font-family: var(--hand);
+  font-size: calc(30 * var(--u));
+  line-height: 1;
+}
+
+.say-hi__signature {
+  position: absolute;
+  top: calc(560 * var(--u));
+  left: calc(122 * var(--u));
+  color: var(--ink);
+  font-size: calc(24 * var(--u));
+}
