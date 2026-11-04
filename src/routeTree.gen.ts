@@ -16,6 +16,8 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FeedDotxmlRouteImport } from './routes/feed[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ArticleSlugRouteImport } from './routes/article.$slug'
+import { Route as PxSDotjsRouteImport } from './routes/px/s[.]js'
+import { Route as PxApiSendRouteImport } from './routes/px/api/send'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +54,16 @@ const ArticleSlugRoute = ArticleSlugRouteImport.update({
   path: '/article/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PxSDotjsRoute = PxSDotjsRouteImport.update({
+  id: '/px/s.js',
+  path: '/px/s.js',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PxApiSendRoute = PxApiSendRouteImport.update({
+  id: '/px/api/send',
+  path: '/px/api/send',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +73,8 @@ export interface FileRoutesByFullPath {
   '/feed.xml': typeof FeedDotxmlRoute
   '/privacy': typeof PrivacyRoute
   '/article/$slug': typeof ArticleSlugRoute
+  '/px/s.js': typeof PxSDotjsRoute
+  '/px/api/send': typeof PxApiSendRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +84,8 @@ export interface FileRoutesByTo {
   '/feed.xml': typeof FeedDotxmlRoute
   '/privacy': typeof PrivacyRoute
   '/article/$slug': typeof ArticleSlugRoute
+  '/px/s.js': typeof PxSDotjsRoute
+  '/px/api/send': typeof PxApiSendRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +96,8 @@ export interface FileRoutesById {
   '/feed.xml': typeof FeedDotxmlRoute
   '/privacy': typeof PrivacyRoute
   '/article/$slug': typeof ArticleSlugRoute
+  '/px/s.js': typeof PxSDotjsRoute
+  '/px/api/send': typeof PxApiSendRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +109,8 @@ export interface FileRouteTypes {
     | '/feed.xml'
     | '/privacy'
     | '/article/$slug'
+    | '/px/s.js'
+    | '/px/api/send'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +120,8 @@ export interface FileRouteTypes {
     | '/feed.xml'
     | '/privacy'
     | '/article/$slug'
+    | '/px/s.js'
+    | '/px/api/send'
   id:
     | '__root__'
     | '/'
@@ -109,6 +131,8 @@ export interface FileRouteTypes {
     | '/feed.xml'
     | '/privacy'
     | '/article/$slug'
+    | '/px/s.js'
+    | '/px/api/send'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +143,8 @@ export interface RootRouteChildren {
   FeedDotxmlRoute: typeof FeedDotxmlRoute
   PrivacyRoute: typeof PrivacyRoute
   ArticleSlugRoute: typeof ArticleSlugRoute
+  PxSDotjsRoute: typeof PxSDotjsRoute
+  PxApiSendRoute: typeof PxApiSendRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +198,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArticleSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/px/s.js': {
+      id: '/px/s.js'
+      path: '/px/s.js'
+      fullPath: '/px/s.js'
+      preLoaderRoute: typeof PxSDotjsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/px/api/send': {
+      id: '/px/api/send'
+      path: '/px/api/send'
+      fullPath: '/px/api/send'
+      preLoaderRoute: typeof PxApiSendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +223,8 @@ const rootRouteChildren: RootRouteChildren = {
   FeedDotxmlRoute: FeedDotxmlRoute,
   PrivacyRoute: PrivacyRoute,
   ArticleSlugRoute: ArticleSlugRoute,
+  PxSDotjsRoute: PxSDotjsRoute,
+  PxApiSendRoute: PxApiSendRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

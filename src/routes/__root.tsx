@@ -48,6 +48,15 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* data-domains keeps local and preview builds out of the numbers. */}
+        <script
+          defer
+          src="/px/s.js"
+          data-website-id="270cf818-e1ea-4a13-a087-149fd7db7425"
+          data-host-url="/px"
+          data-performance="true"
+          data-domains="boujaddi.com"
+        />
       </head>
       <body>
         {children}
