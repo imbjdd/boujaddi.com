@@ -10,6 +10,9 @@ const title = 'salim boujaddi'
 const description =
   'Product engineer building and shipping AI products from 0 to 1.'
 
+const ogImage = 'https://boujaddi.com/og.jpg'
+const ogImageAlt = 'i make ai things people actually use, beside photos of Salim'
+
 // All three are on screen on load, so fetch them before the CSS asks for them.
 const preloadedFonts = [serif, serifItalic, hand].map((href) => ({
   rel: 'preload',
@@ -30,7 +33,13 @@ export const Route = createRootRoute({
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:type', content: 'website' },
-      { name: 'twitter:card', content: 'summary' },
+      { property: 'og:image', content: ogImage },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: ogImageAlt },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: ogImage },
+      { name: 'twitter:image:alt', content: ogImageAlt },
       { name: 'twitter:creator', content: '@salimboujaddi' },
     ],
     links: [
