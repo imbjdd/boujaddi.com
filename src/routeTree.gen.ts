@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FeedDotxmlRouteImport } from './routes/feed[.]xml'
 import { Route as ArticleSlugRouteImport } from './routes/article.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedDotxmlRoute = FeedDotxmlRouteImport.update({
+  id: '/feed.xml',
+  path: '/feed.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArticleSlugRoute = ArticleSlugRouteImport.update({
@@ -25,27 +31,31 @@ const ArticleSlugRoute = ArticleSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/article/$slug': typeof ArticleSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/article/$slug': typeof ArticleSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/feed.xml': typeof FeedDotxmlRoute
   '/article/$slug': typeof ArticleSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/article/$slug'
+  fullPaths: '/' | '/feed.xml' | '/article/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/article/$slug'
-  id: '__root__' | '/' | '/article/$slug'
+  to: '/' | '/feed.xml' | '/article/$slug'
+  id: '__root__' | '/' | '/feed.xml' | '/article/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FeedDotxmlRoute: typeof FeedDotxmlRoute
   ArticleSlugRoute: typeof ArticleSlugRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feed.xml': {
+      id: '/feed.xml'
+      path: '/feed.xml'
+      fullPath: '/feed.xml'
+      preLoaderRoute: typeof FeedDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/article/$slug': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FeedDotxmlRoute: FeedDotxmlRoute,
   ArticleSlugRoute: ArticleSlugRoute,
 }
 export const routeTree = rootRouteImport
