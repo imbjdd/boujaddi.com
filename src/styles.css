@@ -743,3 +743,215 @@ em {
 .article__body li::marker {
   color: var(--cobalt);
 }
+
+/* Small screens: the same type, stacked in reading order in a narrow column. */
+
+@media (max-width: 1100px) {
+  :root {
+    --u: calc(min(100cqw, 480px) / 390);
+    --gutter: calc(24 * var(--u));
+  }
+
+  .frame {
+    max-width: 600px;
+  }
+
+  .hero,
+  .projects,
+  .about,
+  .experience,
+  .sheets,
+  .say-hi {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: calc(56 * var(--u)) var(--gutter);
+  }
+
+  .nav,
+  .hero__title,
+  .hero__intro,
+  .projects__title,
+  .projects__note,
+  .about__title,
+  .about__bio,
+  .note,
+  .experience__title,
+  .jobs,
+  .sheet,
+  .say-hi__title,
+  .say-hi__actions,
+  .say-hi__signature,
+  .print {
+    position: relative;
+    inset: auto;
+    max-width: 100%;
+  }
+
+  .hero {
+    gap: calc(36 * var(--u));
+    padding-top: calc(24 * var(--u));
+  }
+
+  .article {
+    width: 100%;
+    padding: calc(24 * var(--u)) var(--gutter) calc(64 * var(--u));
+  }
+
+  .article__column {
+    width: 100%;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: calc(4 * var(--u)) calc(20 * var(--u));
+    margin-bottom: calc(36 * var(--u));
+  }
+
+  .nav__name {
+    width: 100%;
+  }
+
+  .hero__intro {
+    width: 100%;
+  }
+
+  .hero__title {
+    width: calc(290 * var(--u));
+    font-size: calc(60 * var(--u));
+    line-height: calc(60 * var(--u));
+  }
+
+  .wall {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(28 * var(--u));
+    margin-top: calc(20 * var(--u));
+  }
+
+  .wall .print {
+    width: 76%;
+  }
+
+  .wall .print:nth-child(even) {
+    align-self: flex-end;
+  }
+
+  /* The cutout has no caption, so only the next print can overlap it. */
+  .wall .print:nth-child(2) {
+    margin-top: calc(-40 * var(--u));
+  }
+
+  .wall .print--cutout {
+    width: 54%;
+  }
+
+  .projects {
+    gap: calc(40 * var(--u));
+  }
+
+  .projects .print {
+    width: 92%;
+  }
+
+  .projects .print:nth-of-type(even) {
+    align-self: flex-end;
+  }
+
+  .projects__note,
+  .experience__title {
+    width: 100%;
+  }
+
+  .about {
+    gap: calc(28 * var(--u));
+  }
+
+  .about__bio {
+    width: 100%;
+    font-size: calc(21 * var(--u));
+    line-height: calc(29 * var(--u));
+  }
+
+  .about__doodle {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: 1;
+    align-self: center;
+    width: 46%;
+    margin-top: calc(12 * var(--u));
+  }
+
+  .about .print {
+    align-self: flex-end;
+    width: 64%;
+  }
+
+  .note {
+    width: 66%;
+    margin-top: calc(12 * var(--u));
+  }
+
+  .experience {
+    gap: calc(28 * var(--u));
+  }
+
+  .experience .print {
+    order: 1;
+    width: 72%;
+    margin-top: calc(16 * var(--u));
+  }
+
+  .jobs {
+    width: 100%;
+  }
+
+  .job {
+    grid-template-columns: 1fr auto;
+  }
+
+  .job__role {
+    order: 1;
+    grid-column: 1 / -1;
+    white-space: normal;
+  }
+
+  .sheets {
+    gap: calc(40 * var(--u));
+    padding-top: calc(16 * var(--u));
+  }
+
+  .sheet {
+    width: 100%;
+    padding: calc(24 * var(--u));
+  }
+
+  .say-hi {
+    gap: calc(28 * var(--u));
+    padding-top: calc(32 * var(--u));
+  }
+
+  .say-hi__title {
+    font-size: calc(130 * var(--u));
+    line-height: calc(136 * var(--u));
+  }
+
+  .say-hi .print {
+    width: 72%;
+    align-self: flex-end;
+    margin-top: calc(16 * var(--u));
+  }
+
+  .say-hi__signature {
+    order: 1;
+  }
+
+  /* Tilted edges stay inside the page and tilt hovers don't apply to touch. */
+  .print:hover {
+    rotate: var(--tilt);
+    scale: 1;
+  }
+}
