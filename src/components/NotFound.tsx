@@ -10,7 +10,7 @@ export function NotFound() {
             <h1 className="display">
               nothing <em>here.</em>
             </h1>
-            <a className="hand article__back" href="/">
+            <a className="hand article__back" href="/" data-sound="backward">
               ← back home
             </a>
           </div>

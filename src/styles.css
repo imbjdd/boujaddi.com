@@ -210,6 +210,34 @@ em {
   line-height: calc(26 * var(--u));
 }
 
+/* Sound toggle: a pen-written label pinned to the corner, above the ink. */
+
+.sound-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  padding: 0 16px 2px;
+  border: 2px solid var(--cobalt);
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--cobalt);
+  font-family: var(--hand);
+  font-size: 28px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: rotate 240ms var(--pop);
+}
+
+.sound-toggle:hover {
+  rotate: -3deg;
+}
+
+.sound-toggle[aria-pressed='false'] span {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.08em;
+}
+
 /* Prints */
 
 .print {

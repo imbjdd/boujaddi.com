@@ -4,6 +4,8 @@ import serifItalic from '@fontsource/instrument-serif/files/instrument-serif-lat
 import serif from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url'
 import hand from '@fontsource/reenie-beanie/files/reenie-beanie-latin-400-normal.woff2?url'
 
+import { SoundToggle } from '#/components/SoundToggle'
+
 import appCss from '../styles.css?url'
 
 const title = 'salim boujaddi'
@@ -69,6 +71,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <SoundToggle />
 
         <Scripts />
       </body>

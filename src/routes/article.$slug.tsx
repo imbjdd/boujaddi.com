@@ -40,7 +40,11 @@ function ArticlePage() {
         <main className="frame article">
           <Nav />
           <article className="article__column">
-            <a className="hand article__back" href="/#wrote">
+            <a
+              className="hand article__back"
+              href="/#wrote"
+              data-sound="backward"
+            >
               ← everything i wrote
             </a>
             <h1 className="display article__title">{article.title}</h1>
