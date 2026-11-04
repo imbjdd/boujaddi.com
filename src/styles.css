@@ -675,3 +675,71 @@ em {
 #wrote {
   scroll-margin-top: calc(40 * var(--u));
 }
+
+/* Article pages */
+
+.article {
+  min-height: 100vh;
+  padding: calc(130 * var(--u)) 0 calc(110 * var(--u));
+}
+
+.article__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc(680 * var(--u));
+  margin-inline: auto;
+}
+
+.article__back {
+  margin-bottom: calc(28 * var(--u));
+  color: var(--cobalt);
+}
+
+.article__title {
+  margin-bottom: calc(10 * var(--u));
+}
+
+.article__body {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+  width: 100%;
+  margin: calc(36 * var(--u)) 0 calc(44 * var(--u));
+  font-size: calc(22 * var(--u));
+  line-height: calc(31 * var(--u));
+}
+
+.article__body a {
+  color: var(--cobalt);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.article__body h2 {
+  margin-top: calc(20 * var(--u));
+  font-size: calc(36 * var(--u));
+  font-style: italic;
+  font-weight: 400;
+  line-height: calc(40 * var(--u));
+}
+
+.article__body h3 {
+  margin-top: calc(6 * var(--u));
+  margin-bottom: calc(-12 * var(--u));
+  font-size: calc(26 * var(--u));
+  font-weight: 400;
+  line-height: calc(32 * var(--u));
+}
+
+.article__body ul {
+  display: flex;
+  flex-direction: column;
+  gap: calc(6 * var(--u));
+  padding-left: 1.1em;
+  list-style: disc;
+}
+
+.article__body li::marker {
+  color: var(--cobalt);
+}
