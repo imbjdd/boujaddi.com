@@ -181,3 +181,86 @@ em {
   font-size: calc(22 * var(--u));
   line-height: calc(26 * var(--u));
 }
+
+/* Prints */
+
+.print {
+  position: absolute;
+  left: calc(var(--x) * var(--u));
+  top: calc(var(--y) * var(--u));
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+  width: calc(var(--w) * var(--u));
+  padding: calc(9 * var(--u)) calc(9 * var(--u)) calc(6 * var(--u));
+  background: var(--white);
+  rotate: var(--tilt);
+  transition:
+    rotate 320ms var(--pop),
+    scale 320ms var(--pop);
+}
+
+.print img,
+.print video {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--ratio);
+  object-fit: cover;
+  object-position: var(--focus);
+}
+
+.print:hover {
+  z-index: 5;
+  rotate: calc(var(--tilt) * -0.4);
+  scale: 1.03;
+}
+
+.print--draggable {
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.print[data-dragging] {
+  cursor: grabbing;
+  scale: 1.05;
+}
+
+.print--cutout {
+  aspect-ratio: var(--ratio);
+  padding: 0;
+  overflow: hidden;
+  background: var(--cobalt);
+}
+
+.print--cutout img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  aspect-ratio: 1000 / 1308;
+}
+
+.print--entrance {
+  animation: drop 620ms var(--pop) backwards;
+  animation-delay: calc(var(--entrance) * 90ms + 80ms);
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    scale: 1.12;
+    rotate: calc(var(--tilt) + 7deg);
+  }
+}
+
+.tape {
+  position: absolute;
+  top: calc(-11 * var(--u));
+  left: 38%;
+  z-index: 1;
+  width: calc(80 * var(--u));
+  height: calc(24 * var(--u));
+  background: rgb(239 224 141 / 0.9);
+  rotate: -5deg;
+}
