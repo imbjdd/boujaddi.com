@@ -573,3 +573,105 @@ em {
   color: var(--ink);
   font-size: calc(24 * var(--u));
 }
+
+/* Effects: everything here behaves like a pen or a developing photo. */
+
+.ink-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Highlighter swipes */
+
+.mark::before {
+  transform-origin: left center;
+}
+
+.mark--title::before {
+  animation: swipe 560ms cubic-bezier(0.2, 0.8, 0.2, 1) 520ms backwards;
+}
+
+@keyframes swipe {
+  from {
+    scale: 0 1;
+  }
+}
+
+/* Photos develop like a Polaroid */
+
+@keyframes develop {
+  from {
+    filter: brightness(1.4) saturate(0.1) contrast(0.7) blur(3px);
+  }
+}
+
+.print--entrance img {
+  animation: develop 1500ms ease-out backwards;
+  animation-delay: calc(var(--entrance) * 90ms + 200ms);
+}
+
+/* Further down the page, the same landing plays when each photo reaches the screen. */
+
+.print[data-pending],
+.about__doodle[data-pending] {
+  opacity: 0;
+}
+
+.print[data-landed],
+.about__doodle[data-landed] {
+  animation: drop 620ms var(--pop) backwards;
+}
+
+.print[data-landed] img,
+.print[data-landed] video {
+  animation: develop 1500ms ease-out 120ms backwards;
+}
+
+.mark[data-pending]::before {
+  scale: 0 1;
+}
+
+.mark[data-landed]::before {
+  animation: swipe 620ms cubic-bezier(0.2, 0.8, 0.2, 1) 200ms backwards;
+}
+
+/* Pen squiggle under handwritten links */
+
+@media (hover: hover) {
+  .nav a,
+  .socials a {
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav a:hover,
+  .socials a:hover {
+    text-decoration: none;
+  }
+
+  .nav a::after,
+  .socials a::after {
+    content: '';
+    position: absolute;
+    bottom: -0.1em;
+    left: 0;
+    width: 0;
+    height: 0.26em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M0 4c3-4 7-4 10 0s7 4 10 0' fill='none' stroke='%231f3bff' stroke-width='1.6'/%3E%3C/svg%3E")
+      repeat-x left center / auto 100%;
+    transition: width 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .nav a:hover::after,
+  .socials a:hover::after {
+    width: 100%;
+  }
+}
+
+#wrote {
+  scroll-margin-top: calc(40 * var(--u));
+}
