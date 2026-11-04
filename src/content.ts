@@ -35,6 +35,11 @@ export const projects = [
 ]
 
 export const experience = [
+  {
+    company: 'scope (yc p26)',
+    role: 'founding engineer',
+    dates: 'oct 2026 – present',
+  },
   { company: 'ergon', role: 'co-founder & cto', dates: 'jul – sep 2026' },
   { company: 'stairling', role: 'ai engineer', dates: 'jun – aug 2026' },
   {
