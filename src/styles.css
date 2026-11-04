@@ -1,0 +1,183 @@
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource/reenie-beanie/400.css';
+
+:root {
+  --cream: #ede9e1;
+  --ink: #2b2d31;
+  --cobalt: #1f3bff;
+  --yellow: #efe08d;
+  --white: #fff;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --hand: 'Reenie Beanie', 'Comic Sans MS', cursive;
+  --pop: cubic-bezier(0.34, 1.3, 0.64, 1);
+  /* One unit is one pixel of the 1440px design. It shrinks on smaller screens and never grows. */
+  --u: calc(min(100cqw, 1440px) / 1440);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+figure,
+h1,
+h2,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--serif);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 3px;
+}
+
+.band--cobalt :focus-visible {
+  outline-color: var(--yellow);
+}
+
+img {
+  display: block;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Layout */
+
+.page {
+  container-type: inline-size;
+}
+
+.band {
+  overflow: clip;
+}
+
+.band--cobalt {
+  background: var(--cobalt);
+  color: var(--cream);
+}
+
+.frame {
+  position: relative;
+  width: calc(1440 * var(--u));
+  margin-inline: auto;
+}
+
+/* Type */
+
+.display {
+  position: relative;
+  z-index: 0;
+  font-weight: 400;
+  font-size: calc(56 * var(--u));
+  line-height: calc(56 * var(--u));
+  letter-spacing: -0.02em;
+}
+
+.hand {
+  color: var(--cobalt);
+  font-family: var(--hand);
+  font-size: calc(28 * var(--u));
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.caption {
+  display: block;
+  color: var(--cobalt);
+  font-family: var(--hand);
+  font-size: calc(24 * var(--u));
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.mark {
+  position: relative;
+  display: inline-block;
+}
+
+.mark::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: var(--yellow);
+  rotate: -1.5deg;
+}
+
+.mark--title::before {
+  top: 0.57em;
+  left: -0.04em;
+  width: calc(100% + 0.06em);
+  height: 0.5em;
+}
+
+.mark--hi::before {
+  top: 0.63em;
+  left: 0.02em;
+  width: 100%;
+  height: 0.37em;
+}
+
+.button {
+  display: inline-block;
+  padding: calc(10 * var(--u)) calc(20 * var(--u));
+  border-radius: 999px;
+  background: var(--cobalt);
+  color: var(--white);
+  font-size: calc(20 * var(--u));
+  line-height: calc(24 * var(--u));
+  transition:
+    rotate 240ms var(--pop),
+    scale 240ms var(--pop);
+}
+
+.button:hover {
+  rotate: -3deg;
+  scale: 1.05;
+  text-decoration: none;
+}
+
+.button:active {
+  scale: 0.97;
+}
+
+.button--large {
+  padding: calc(12 * var(--u)) calc(24 * var(--u));
+  font-size: calc(22 * var(--u));
+  line-height: calc(26 * var(--u));
+}
