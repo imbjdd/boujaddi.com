@@ -264,3 +264,54 @@ em {
   background: rgb(239 224 141 / 0.9);
   rotate: -5deg;
 }
+
+/* Hero */
+
+.hero {
+  height: calc(760 * var(--u));
+}
+
+.nav {
+  position: absolute;
+  top: calc(36 * var(--u));
+  left: calc(120 * var(--u));
+  right: calc(120 * var(--u));
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: calc(28 * var(--u));
+  color: var(--cobalt);
+  font-family: var(--hand);
+  font-size: calc(26 * var(--u));
+  line-height: calc(30 * var(--u));
+}
+
+.nav__name {
+  margin-right: auto;
+  color: var(--ink);
+  font-size: calc(30 * var(--u));
+}
+
+.hero__title {
+  position: absolute;
+  top: calc(220 * var(--u));
+  left: calc(120 * var(--u));
+  width: calc(340 * var(--u));
+  font-size: calc(72 * var(--u));
+  line-height: calc(70 * var(--u));
+}
+
+.hero__intro {
+  position: absolute;
+  top: calc(470 * var(--u));
+  left: calc(122 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(20 * var(--u));
+  width: calc(360 * var(--u));
+}
+
+.wall {
+  display: contents;
+}
