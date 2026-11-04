@@ -336,7 +336,9 @@ function SayHi() {
           <figcaption className="caption">me, waiting for your dm</figcaption>
         </Print>
 
-        <p className="hand say-hi__signature">salim boujaddi, 2026</p>
+        <p className="hand say-hi__signature">
+          salim boujaddi, 2026 · <a href="/privacy">privacy</a>
+        </p>
       </div>
     </footer>
   )
