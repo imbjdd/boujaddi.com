@@ -315,3 +315,46 @@ em {
 .wall {
   display: contents;
 }
+
+/* Projects */
+
+.projects {
+  height: calc(740 * var(--u));
+}
+
+.projects__title {
+  position: absolute;
+  top: calc(80 * var(--u));
+  left: calc(120 * var(--u));
+}
+
+.projects__note {
+  position: absolute;
+  top: calc(570 * var(--u));
+  left: calc(130 * var(--u));
+  width: calc(400 * var(--u));
+  rotate: -2deg;
+}
+
+.project-caption {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1 * var(--u));
+  padding: calc(2 * var(--u)) 0 calc(6 * var(--u));
+}
+
+.project-caption .caption {
+  font-size: calc(22 * var(--u));
+}
+
+.project-caption__name {
+  font-size: calc(28 * var(--u));
+  line-height: calc(32 * var(--u));
+}
+
+/* The whole print is clickable. */
+.project-caption__name::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}

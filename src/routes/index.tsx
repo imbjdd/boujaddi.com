@@ -3,7 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { InkTrail } from '#/components/InkTrail'
 import { Nav } from '#/components/Nav'
 import { Print } from '#/components/Print'
-import { links } from '#/content'
+import { links, projects } from '#/content'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -12,6 +12,9 @@ function Home() {
     <div className="page">
       <InkTrail />
       <Hero />
+      <main>
+        <Projects />
+      </main>
     </div>
   )
 }
@@ -94,5 +97,46 @@ function Hero() {
         </div>
       </div>
     </header>
+  )
+}
+
+const projectLayout = [
+  { x: 120, y: 190, w: 440, ratio: 676 / 380, tilt: -2 },
+  { x: 610, y: 110, w: 340, ratio: 536 / 300, tilt: 3 },
+  { x: 985, y: 300, w: 335, ratio: 556 / 310, tilt: -2.5, tape: true },
+]
+
+function Projects() {
+  return (
+    <section className="band" id="made">
+      <div className="frame projects">
+        <h2 className="display projects__title">
+          stuff <em>i made.</em>
+        </h2>
+
+        {projects.map((project, index) => (
+          <Print
+            key={project.name}
+            {...projectLayout[index]}
+            draggable={false}
+            src={project.image}
+            video={project.video}
+            alt={project.alt}
+          >
+            <figcaption className="project-caption">
+              <a className="project-caption__name" href={project.href}>
+                {project.name}
+              </a>
+              <span className="caption">{project.description}</span>
+            </figcaption>
+          </Print>
+        ))}
+
+        <p className="hand projects__note">
+          + small projects along the way, because i like experimenting and
+          exploring new ideas.
+        </p>
+      </div>
+    </section>
   )
 }
