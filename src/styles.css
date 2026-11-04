@@ -358,3 +358,79 @@ em {
   position: absolute;
   inset: 0;
 }
+
+/* About */
+
+.about {
+  height: calc(760 * var(--u));
+}
+
+.about__doodle {
+  --tilt: -3deg;
+  position: absolute;
+  top: calc(240 * var(--u));
+  left: calc(200 * var(--u));
+  width: calc(220 * var(--u));
+  rotate: var(--tilt);
+}
+
+.about__doodle svg {
+  width: 100%;
+  stroke: var(--cream, #ede9e1);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about__doodle .about__crown {
+  stroke: var(--yellow);
+}
+
+.about__title {
+  position: absolute;
+  top: calc(120 * var(--u));
+  left: calc(600 * var(--u));
+}
+
+.about__bio {
+  position: absolute;
+  top: calc(210 * var(--u));
+  left: calc(600 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+  width: calc(560 * var(--u));
+  font-size: calc(22 * var(--u));
+  line-height: calc(31 * var(--u));
+}
+
+.note {
+  position: absolute;
+  top: calc(430 * var(--u));
+  left: calc(610 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--u));
+  width: calc(240 * var(--u));
+  padding: calc(16 * var(--u)) calc(18 * var(--u));
+  background: var(--yellow);
+  color: var(--ink);
+  rotate: -3deg;
+}
+
+.note .hand {
+  color: var(--ink);
+  font-size: calc(24 * var(--u));
+  line-height: 1;
+}
+
+.note__figure {
+  font-size: calc(44 * var(--u));
+  font-weight: 400;
+  line-height: 1;
+}
+
+.about .print .caption {
+  font-size: calc(22 * var(--u));
+  white-space: nowrap;
+}

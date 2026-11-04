@@ -4,6 +4,7 @@ import { InkTrail } from '#/components/InkTrail'
 import { Nav } from '#/components/Nav'
 import { Print } from '#/components/Print'
 import { links, projects } from '#/content'
+import { useLanding } from '#/useLanding'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -14,6 +15,7 @@ function Home() {
       <Hero />
       <main>
         <Projects />
+        <About />
       </main>
     </div>
   )
@@ -136,6 +138,73 @@ function Projects() {
           + small projects along the way, because i like experimenting and
           exploring new ideas.
         </p>
+      </div>
+    </section>
+  )
+}
+
+function About() {
+  const doodle = useLanding<HTMLDivElement>()
+
+  return (
+    <section className="band band--cobalt" id="about">
+      <div className="frame about">
+        <div ref={doodle} className="about__doodle" aria-hidden="true">
+          <svg viewBox="0 0 260 320" fill="none">
+            <path
+              className="about__crown"
+              d="M88 75 C86 61 84 47 82 34 C92 42 100 50 108 56 C115 46 123 36 130 26 C136 36 144 46 151 56 C160 49 168 41 178 33 C176 47 174 61 171 74 C144 70 116 70 88 75 Z"
+            />
+            <path d="M84 118 C82 92 104 76 132 76 C160 76 178 94 177 120 C176 148 156 168 130 168 C104 168 86 146 84 118 Z" />
+            <path d="M85 112 C96 108 100 96 104 90 C108 100 114 104 120 104 C124 98 126 92 129 88 C133 98 140 104 148 104 C152 98 154 94 156 90 C160 100 168 108 176 112" />
+            <path d="M113 121 L113 124 M148 121 L148 124" />
+            <path d="M115 142 C124 151 138 151 147 141" />
+            <path d="M130 168 C129 196 131 224 130 252" />
+            <path d="M130 192 C110 182 90 166 72 140" />
+            <path d="M130 192 C150 202 170 214 190 228" />
+            <path d="M130 252 C120 276 110 296 98 314 M130 252 C140 276 152 296 166 314" />
+            <path
+              className="about__crown"
+              d="M52 132 L42 124 M50 112 L38 104 M66 110 L60 96"
+            />
+          </svg>
+        </div>
+
+        <h2 className="display about__title">
+          hi, it's <em>me.</em>
+        </h2>
+
+        <div className="about__bio">
+          <p>
+            i enjoy working across engineering and product, turning ideas into
+            simple tools that people actually use.
+          </p>
+          <p>
+            i've worked across ai startups, consulting and research, and spoken
+            at the european central bank about ai agents and their impact on
+            institutions.
+          </p>
+        </div>
+
+        <aside className="note">
+          <strong className="note__figure">$10k+</strong>
+          <span className="hand">
+            in hackathon prizes, with multiple wins at ethglobal and
+            entrepreneur first
+          </span>
+        </aside>
+
+        <Print
+          src="/photos/eiffel.webp"
+          alt="Salim in a suit at night, looking away from the lit-up Eiffel Tower"
+          x={900}
+          y={420}
+          w={240}
+          ratio={280 / 220}
+          tilt={4}
+        >
+          <figcaption className="caption">me, updating my p(doom)</figcaption>
+        </Print>
       </div>
     </section>
   )
