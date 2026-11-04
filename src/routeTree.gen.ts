@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FeedDotxmlRouteImport } from './routes/feed[.]xml'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ArticleSlugRouteImport } from './routes/article.$slug'
 import { Route as PxSDotjsRouteImport } from './routes/px/s[.]js'
@@ -44,6 +45,11 @@ const FeedDotxmlRoute = FeedDotxmlRouteImport.update({
   path: '/feed.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/feed.xml': typeof FeedDotxmlRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/privacy': typeof PrivacyRoute
   '/article/$slug': typeof ArticleSlugRoute
   '/px/s.js': typeof PxSDotjsRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/feed.xml': typeof FeedDotxmlRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/privacy': typeof PrivacyRoute
   '/article/$slug': typeof ArticleSlugRoute
   '/px/s.js': typeof PxSDotjsRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/feed.xml': typeof FeedDotxmlRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/privacy': typeof PrivacyRoute
   '/article/$slug': typeof ArticleSlugRoute
   '/px/s.js': typeof PxSDotjsRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/feed.xml'
+    | '/llms.txt'
     | '/privacy'
     | '/article/$slug'
     | '/px/s.js'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/feed.xml'
+    | '/llms.txt'
     | '/privacy'
     | '/article/$slug'
     | '/px/s.js'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/feed.xml'
+    | '/llms.txt'
     | '/privacy'
     | '/article/$slug'
     | '/px/s.js'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
   FeedDotxmlRoute: typeof FeedDotxmlRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   PrivacyRoute: typeof PrivacyRoute
   ArticleSlugRoute: typeof ArticleSlugRoute
   PxSDotjsRoute: typeof PxSDotjsRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeedDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
   FeedDotxmlRoute: FeedDotxmlRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   PrivacyRoute: PrivacyRoute,
   ArticleSlugRoute: ArticleSlugRoute,
   PxSDotjsRoute: PxSDotjsRoute,
