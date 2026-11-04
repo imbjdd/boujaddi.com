@@ -1,9 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 
+import { articles } from '#/articles'
 import { InkTrail } from '#/components/InkTrail'
 import { Nav } from '#/components/Nav'
 import { Print } from '#/components/Print'
-import { experience, links, projects } from '#/content'
+import { experience, links, projects, talks } from '#/content'
 import { useLanding } from '#/useLanding'
 
 export const Route = createFileRoute('/')({ component: Home })
@@ -17,6 +18,7 @@ function Home() {
         <Projects />
         <About />
         <Experience />
+        <TalksAndArticles />
       </main>
     </div>
   )
@@ -240,6 +242,48 @@ function Experience() {
             </li>
           ))}
         </ol>
+      </div>
+    </section>
+  )
+}
+
+function TalksAndArticles() {
+  return (
+    <section className="band">
+      <div className="frame sheets">
+        <div className="sheet sheet--talks">
+          <h2 className="display sheet__title">
+            said <em>out loud.</em>
+          </h2>
+          <ul className="entries">
+            {talks.map((talk) => (
+              <li key={talk.title}>
+                <span className="entry__title">{talk.title}</span>
+                <span className="caption">{talk.meta}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="sheet sheet--articles" id="wrote">
+          <h2 className="display sheet__title">
+            wrote <em>down.</em>
+          </h2>
+          <ul className="entries">
+            {articles.map((article) => (
+              <li key={article.title}>
+                <Link
+                  className="entry__title"
+                  to="/article/$slug"
+                  params={{ slug: article.slug }}
+                >
+                  {article.title}
+                </Link>
+                <span className="caption">{article.meta}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )
