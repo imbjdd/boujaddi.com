@@ -24,11 +24,11 @@ function Privacy() {
         <main className="frame article">
           <Nav />
           <article className="article__column">
-            <a className="hand article__back" href="/">
+            <a className="hand article__back" href="/" data-sound="backward">
               ← back home
             </a>
             <h1 className="display article__title">privacy</h1>
-            <p className="caption">last updated november 3, 2026</p>
+            <p className="caption">last updated november 4, 2026</p>
             <div className="article__body">
               <p>
                 This is a personal site. There are no accounts, no sign-up, no
@@ -37,10 +37,12 @@ function Privacy() {
               </p>
               <h2>No cookies</h2>
               <p>
-                The site sets no cookies and writes nothing to local storage.
-                Your scroll position is kept in session storage for the current
-                tab and never leaves your browser. There is no consent banner
-                because there is nothing to consent to.
+                The site sets no cookies. If you turn the interface sounds off,
+                that choice is saved in local storage so it sticks between
+                visits; nothing else is written there. Your scroll position is
+                kept in session storage for the current tab and never leaves
+                your browser. There is no consent banner because there is
+                nothing to consent to.
               </p>
               <h2>Analytics</h2>
               <p>

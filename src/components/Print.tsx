@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import type { CSSProperties, PointerEvent, ReactNode } from 'react'
 
+import { play } from '#/sound'
 import { useLanding } from '#/useLanding'
 
 let topLayer = 10
@@ -101,6 +102,7 @@ export function Print({
     event.currentTarget.setPointerCapture(event.pointerId)
     event.currentTarget.style.zIndex = String(++topLayer)
     event.currentTarget.dataset.dragging = 'true'
+    play('lift')
     drag.current = {
       x: event.clientX - offset.current.x,
       y: event.clientY - offset.current.y,
@@ -117,6 +119,7 @@ export function Print({
   }
 
   function onPointerEnd(event: PointerEvent<HTMLElement>) {
+    if (drag.current) play('drop')
     drag.current = null
     delete event.currentTarget.dataset.dragging
   }

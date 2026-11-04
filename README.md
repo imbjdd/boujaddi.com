@@ -15,6 +15,7 @@ pnpm build
 - `src/routes/px/`: first-party proxy for Umami analytics, described on `/privacy`.
 - `src/routes/index.tsx`: page sections, photo placement and captions.
 - `src/components/Print.tsx`: the tilted photo, including mouse dragging.
+- `src/sound.ts`: interface sounds, synthesised with Web Audio. Clicks pick a cue from the element (`data-sound` overrides it, `none` silences it); `SoundToggle` mutes them.
 - `public/photos/`: photos of Salim. `cutout-headphones.webp` has a transparent background.
 - `src/styles.css`: all styles. `--u` is one pixel of the 1440px design, so the desktop layout scales as a whole.
 
