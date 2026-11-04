@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "boujaddi-com",
+  "main": "@tanstack/react-start/server-entry",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  /*
+   * A zone route rather than a custom domain: the apex keeps its proxied DNS
+   * record, and the Worker answers every request before it reaches the origin.
+   */
+  "routes": [{ "pattern": "boujaddi.com/*", "zone_name": "boujaddi.com" }],
+  "workers_dev": true,
+  "preview_urls": true,
+  "observability": { "enabled": true },
+}
