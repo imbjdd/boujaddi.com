@@ -434,3 +434,54 @@ em {
   font-size: calc(22 * var(--u));
   white-space: nowrap;
 }
+
+/* Experience */
+
+.experience {
+  height: calc(640 * var(--u));
+}
+
+.experience__title {
+  position: absolute;
+  top: calc(90 * var(--u));
+  left: calc(120 * var(--u));
+  width: calc(300 * var(--u));
+}
+
+.jobs {
+  position: absolute;
+  top: calc(84 * var(--u));
+  left: calc(520 * var(--u));
+  width: calc(800 * var(--u));
+}
+
+.job {
+  display: grid;
+  grid-template-columns: calc(170 * var(--u)) 1fr calc(170 * var(--u));
+  align-items: baseline;
+  padding-block: calc(16 * var(--u));
+  border-bottom: 1px solid var(--ink);
+}
+
+.job:last-child {
+  border-bottom: 0;
+}
+
+.job__company {
+  font-size: calc(26 * var(--u));
+  line-height: calc(32 * var(--u));
+}
+
+.job__role {
+  color: var(--cobalt);
+  font-family: var(--hand);
+  font-size: calc(24 * var(--u));
+  line-height: calc(30 * var(--u));
+  white-space: nowrap;
+}
+
+.job__dates {
+  font-size: calc(17 * var(--u));
+  line-height: calc(22 * var(--u));
+  text-align: right;
+}

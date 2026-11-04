@@ -3,7 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { InkTrail } from '#/components/InkTrail'
 import { Nav } from '#/components/Nav'
 import { Print } from '#/components/Print'
-import { links, projects } from '#/content'
+import { experience, links, projects } from '#/content'
 import { useLanding } from '#/useLanding'
 
 export const Route = createFileRoute('/')({ component: Home })
@@ -16,6 +16,7 @@ function Home() {
       <main>
         <Projects />
         <About />
+        <Experience />
       </main>
     </div>
   )
@@ -205,6 +206,40 @@ function About() {
         >
           <figcaption className="caption">me, updating my p(doom)</figcaption>
         </Print>
+      </div>
+    </section>
+  )
+}
+
+function Experience() {
+  return (
+    <section className="band">
+      <div className="frame experience">
+        <h2 className="display experience__title">
+          where i've <em>been.</em>
+        </h2>
+
+        <Print
+          src="/photos/airport.webp"
+          alt="Salim in headphones and a winter jacket, taking a selfie outside an airport"
+          x={130}
+          y={250}
+          w={260}
+          ratio={366 / 290}
+          tilt={-3}
+        >
+          <figcaption className="caption">me, between two startups</figcaption>
+        </Print>
+
+        <ol className="jobs">
+          {experience.map((job) => (
+            <li className="job" key={job.company}>
+              <span className="job__company">{job.company}</span>
+              <span className="job__role">{job.role}</span>
+              <span className="job__dates">{job.dates}</span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )
